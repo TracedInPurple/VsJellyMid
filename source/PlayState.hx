@@ -3058,7 +3058,7 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() != 'practice' || SONG.song.toLowerCase() != 'entity')
 		{
 			
-			if(FlxG.keys.justPressed.E && oneTimeUse == false || FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUse == false)
+			if(FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUse == false)
 			{
 				if(SONG.song.toLowerCase() == 'suit up')
 					hotbar.animation.play('Potion', true);
@@ -3662,7 +3662,7 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				}
 		}
-		if (mashViolations > 15)
+		if (mashViolations > 12)
 		{
 			defaultCamZoom = 0.6;
 			boyfriend.stunned = true;
@@ -5347,22 +5347,6 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
-		if (dad.curCharacter == 'endless' && SONG.song.toLowerCase() == 'endless')
-			{
-				switch (curStep)
-				{
-					case 10:
-						FlxG.sound.play(Paths.sound('laugh1', 'shared'), 0.7);
-				}
-				if (spinArray.contains(curStep))
-					{
-						strumLineNotes.forEach(function(tospin:FlxSprite)
-						{
-							FlxTween.angle(tospin, 0, 360, 0.2, {ease: FlxEase.quintOut});
-						});
-					}
-			}
-
 		if(SONG.song.toLowerCase() == 'entity')
 		{
 			switch (curStep)
@@ -5435,18 +5419,6 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (SONG.song.toLowerCase() == 'copper')
-		{
-			switch (curStep)
-			{
-				//case 1024:
-				//	//dad.playAnim('unequipPickaxe', true);
-				//	alexUnequip();
-				//	//if (dad.animation.curAnim.name == 'unequipPickaxe')
-				//	
-
-			}
-		}
 
 		if (SONG.song.toLowerCase() == 'espionage')
 		{
@@ -5530,11 +5502,6 @@ class PlayState extends MusicBeatState
 						bonkEvent();
 					case 394 | 426 | 458 | 491 | 651 | 715 | 843 | 907 | 939 | 971 | 1003 | 1163 | 1227:
 						bonkAnim();
-	
-					//case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 | 850 | 852 | 868 | 870 | 884 | 1170:
-					//	steveAttack();
-					//case 804 | 806 | 820 | 822:
-					//	steveAttack();
 				}
 	
 			}

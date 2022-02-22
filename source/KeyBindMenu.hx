@@ -257,7 +257,7 @@ class KeyBindMenu extends FlxSubState
 
         if (KeyBinds.gamepad)
         {
-            for(i in 0...6){
+            for(i in 0...5){
 
                 var textStart = (i == curSelected) ? "> " : "  ";
                 trace(gpKeys[i]);
@@ -267,7 +267,7 @@ class KeyBindMenu extends FlxSubState
         }
         else
         {
-            for(i in 0...6){
+            for(i in 0...5){
 
                 var textStart = (i == curSelected) ? "> " : "  ";
             
@@ -302,7 +302,7 @@ class KeyBindMenu extends FlxSubState
 
     function reset(){
 
-        for(i in 0...6){
+        for(i in 0...5){
             keys[i] = defaultKeys[i];
         }
         quit();
