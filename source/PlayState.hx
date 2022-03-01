@@ -1,3 +1,4 @@
+package;
 //If youre seeing this... Tiago here...
 
 import Options.SpectatorMode;
@@ -539,7 +540,6 @@ class PlayState extends MusicBeatState
 					var repositionShit = -200;
 
 					var house:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('house/house'));
-					house.scrollFactor.set(0.95, 0.95);
 					house.y -= 425;
 					house.x -= 1600;
 					house.setGraphicSize(Std.int(house.width * 6));
@@ -548,7 +548,6 @@ class PlayState extends MusicBeatState
 					doggo = new FlxSprite(-820, 450);
 				    doggo.frames = Paths.getSparrowAtlas('house/doggo');
 					doggo.animation.addByPrefix('bop', 'dog idle', 24, false);
-					doggo.scrollFactor.set(0.9, 0.9);
 					doggo.setGraphicSize(Std.int(doggo.width * 6));
 					doggo.updateHitbox();
 			 		add(doggo);
@@ -556,7 +555,6 @@ class PlayState extends MusicBeatState
 					alexPickaxeBG = new FlxSprite(-375, 200);
 				    alexPickaxeBG.frames = Paths.getSparrowAtlas('house/alexPickaxeBG');
 					alexPickaxeBG.animation.addByPrefix('bop', 'alexPickaxeBG idle', 24, false);
-					alexPickaxeBG.scrollFactor.set(0.9, 0.9);
 					alexPickaxeBG.setGraphicSize(Std.int(alexPickaxeBG.width * 6));
 					alexPickaxeBG.updateHitbox();
 			 		add(alexPickaxeBG);
@@ -564,7 +562,6 @@ class PlayState extends MusicBeatState
 					catto = new FlxSprite(0, -320);
 				    catto.frames = Paths.getSparrowAtlas('house/catto');
 					catto.animation.addByPrefix('bop', 'catto idle', 24, false);
-					catto.scrollFactor.set(0.9, 0.9);
 					catto.setGraphicSize(Std.int(catto.width * 5.5));
 					catto.updateHitbox();
 			 		add(catto);
@@ -572,7 +569,6 @@ class PlayState extends MusicBeatState
 					sheep = new FlxSprite(1500, 420);
 				    sheep.frames = Paths.getSparrowAtlas('house/sheep');
 					sheep.animation.addByPrefix('bop', 'sheep idle', 24, false);
-					sheep.scrollFactor.set(0.9, 0.9);
 					sheep.setGraphicSize(Std.int(sheep.width * 6));
 					sheep.updateHitbox();
 			 		add(sheep);
@@ -590,7 +586,6 @@ class PlayState extends MusicBeatState
 					var repositionShit = -200;
 
 					var mine:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('mine/floor'));
-					mine.scrollFactor.set(0.95, 0.95);
 					mine.y -= 150;
 					mine.x -= 350;
 					mine.setGraphicSize(Std.int(mine.width * 5.5));
@@ -607,7 +602,6 @@ class PlayState extends MusicBeatState
 					minijukebox = new FlxSprite(535, 395);
 				    minijukebox.frames = Paths.getSparrowAtlas('mine/minijukebox');
 					minijukebox.animation.addByPrefix('bop', 'minijukebox idle', 24, false);
-					minijukebox.scrollFactor.set(0.95, 0.95);
 					minijukebox.setGraphicSize(Std.int(minijukebox.width * 4.5));
 					minijukebox.updateHitbox();
 			 		add(minijukebox);
@@ -639,7 +633,6 @@ class PlayState extends MusicBeatState
 					add(caveLeaves);
 
 					var caveFloor:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('cave/floor'));
-					caveFloor.scrollFactor.set(0.95, 0.95);
 					caveFloor.y -= 0;
 					caveFloor.x -= 500;
 					caveFloor.setGraphicSize(Std.int(caveFloor.width * 6.5));
@@ -648,7 +641,6 @@ class PlayState extends MusicBeatState
 					minijukebox = new FlxSprite(580, 540);
 				    minijukebox.frames = Paths.getSparrowAtlas('mine/minijukebox');
 					minijukebox.animation.addByPrefix('bop', 'minijukebox idle', 24, false);
-					minijukebox.scrollFactor.set(0.95, 0.95);
 					minijukebox.setGraphicSize(Std.int(minijukebox.width * 4.5));
 					minijukebox.updateHitbox();
 			 		add(minijukebox);
@@ -675,7 +667,6 @@ class PlayState extends MusicBeatState
 					var repositionShit = -200;
 
 					var templeFloor:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('temple/floor'));
-					templeFloor.scrollFactor.set(0.95, 0.95);
 					templeFloor.y -= -35;
 					templeFloor.x -= 1600;
 					templeFloor.setGraphicSize(Std.int(templeFloor.width * 7));
@@ -684,7 +675,6 @@ class PlayState extends MusicBeatState
 					alecs = new FlxSprite(810, 100);
 				    alecs.frames = Paths.getSparrowAtlas('temple/alexBG');
 			 		alecs.animation.addByPrefix('bop', 'alexBG Idle', 24, false);
-			 		alecs.scrollFactor.set(0.9, 0.9);
 			 		alecs.setGraphicSize(Std.int(alecs.width * 6));
 			 		alecs.updateHitbox();
 			 		add(alecs);
@@ -692,7 +682,6 @@ class PlayState extends MusicBeatState
 					hors = new FlxSprite(1370, 50);
 				    hors.frames = Paths.getSparrowAtlas('temple/horseBG');
 			 		hors.animation.addByPrefix('bop', 'horseBG Idle', 24, false);
-			 		hors.scrollFactor.set(0.9, 0.9);
 			 		hors.setGraphicSize(Std.int(hors.width * 6));
 			 		hors.updateHitbox();
 			 		add(hors);
@@ -700,7 +689,6 @@ class PlayState extends MusicBeatState
 					stev = new FlxSprite(-280, 120);
 				    stev.frames = Paths.getSparrowAtlas('temple/steveBG');
 			 		stev.animation.addByPrefix('bop', 'steveBG Idle', 24, false);
-			 		stev.scrollFactor.set(0.9, 0.9);
 			 		stev.setGraphicSize(Std.int(stev.width * 6));
 			 		stev.updateHitbox();
 			 		add(stev);
@@ -708,7 +696,6 @@ class PlayState extends MusicBeatState
 					notchStanding = new FlxSprite(165, -70);
 				    notchStanding.frames = Paths.getSparrowAtlas('temple/notchStanding');
 					notchStanding.animation.addByPrefix('bop', 'notchStanding idle', 24, false);
-					notchStanding.scrollFactor.set(0.9, 0.9);
 					notchStanding.setGraphicSize(Std.int(notchStanding.width * 5.9));
 					notchStanding.updateHitbox();
 			 		add(notchStanding);
@@ -725,7 +712,6 @@ class PlayState extends MusicBeatState
 					camMovement = 1;
 
 					var forest = new FlxSprite().loadGraphic(Paths.image('entity/forest'));
-					forest.scrollFactor.set(0.95, 0.95);
 					forest.y -= 700;
 					forest.x -= 1600;
 					forest.setGraphicSize(Std.int(forest.width * 6));
@@ -743,7 +729,6 @@ class PlayState extends MusicBeatState
 					var repositionShit = -200;
 
 					var templeentrance:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('templeentrance/templeentrance'));
-					templeentrance.scrollFactor.set(0.95, 0.95);
 					add(templeentrance);
 					templeentrance.y -= 8500;
 					templeentrance.x -= 200;
@@ -751,7 +736,6 @@ class PlayState extends MusicBeatState
 					gfminecraft = new FlxSprite(690, 55);
 				    gfminecraft.frames = Paths.getSparrowAtlas('templeentrance/gfminecraft');
 					gfminecraft.animation.addByPrefix('bop', 'gfminecraft Idle', 24, false);
-					gfminecraft.scrollFactor.set(0.9, 0.9);
 					gfminecraft.setGraphicSize(Std.int(gfminecraft.width * 6));
 					gfminecraft.updateHitbox();
 			 			add(gfminecraft);
@@ -848,7 +832,6 @@ class PlayState extends MusicBeatState
 					var repositionShit = -200;
 
 					var tutorial:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('tutorial/tutorial'));
-					tutorial.scrollFactor.set(0.95, 0.95);
 					tutorial.y -= 300;
 					tutorial.x -= 370;
 					tutorial.setGraphicSize(Std.int(tutorial.width * 7));
@@ -857,7 +840,6 @@ class PlayState extends MusicBeatState
 					irfan = new FlxSprite(350, 150);
 				    irfan.frames = Paths.getSparrowAtlas('tutorial/irfan');
 					irfan.animation.addByPrefix('bop', 'irfan idle', 24, false);
-					irfan.scrollFactor.set(0.95, 0.95);
 					irfan.setGraphicSize(Std.int(irfan.width * 4.7));
 					irfan.updateHitbox();
 			 		add(irfan);
@@ -996,7 +978,6 @@ class PlayState extends MusicBeatState
 					var repositionShit = -200;
 
 					var bgStreet:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('awwman/floor'));
-					bgStreet.scrollFactor.set(0.95, 0.95);
 					add(bgStreet);
 
 					var widShit = Std.int(creeper.width * 6);
@@ -1101,8 +1082,6 @@ class PlayState extends MusicBeatState
 		}
 
 		gf = new Character(400, 130, gfVersion);
-		gf.scrollFactor.set(0.95, 0.95);
-
 		dad = new Character(100, 100, SONG.player2);
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
@@ -3942,26 +3921,30 @@ class PlayState extends MusicBeatState
 
 					}
 					if (daNote.mustPress && !daNote.modifiedByLua)
-					{
-						daNote.visible = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].visible;
-						daNote.x = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].x;
-						if (!daNote.isSustainNote)
-							daNote.angle = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].angle;
-						daNote.alpha = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].alpha;
-					}
-					else if (!daNote.wasGoodHit && !daNote.modifiedByLua)
-					{
-						daNote.visible = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].visible;
-						daNote.x = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].x;
-						if (!daNote.isSustainNote)
-							daNote.angle = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].angle;
-						daNote.alpha = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].alpha;
-					}
+						{
+							daNote.visible = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].visible;
+							daNote.x = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].x;
+							if (daNote.isSustainNote)
+							{
+								if (executeModchart)
+									daNote.alpha = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].alpha;
+							}
+						}
+						else if (!daNote.wasGoodHit && !daNote.modifiedByLua)
+						{
+							daNote.visible = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].visible;
+							daNote.x = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].x;
+							if (daNote.isSustainNote)
+							{
+								if (executeModchart)
+									daNote.alpha = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].alpha;
+							}
+						}
 
 
 
 					if (daNote.isSustainNote)
-						daNote.x += daNote.width / 2 + 17;
+						daNote.x += daNote.width / 2 + 13;
 
 
 					//trace(daNote.y);
@@ -3986,6 +3969,7 @@ class PlayState extends MusicBeatState
 							}
 							else
 								{
+								if (!daNote.isSustainNote)
 									health -= 0.1;
 								vocals.volume = 0;
 								if (theFunne)
@@ -4001,7 +3985,8 @@ class PlayState extends MusicBeatState
 							}
 							else
 							{
-							health -= 0.25;
+							if (!daNote.isSustainNote)
+								health -= 0.25;
 
 							vocals.volume = 0;
 							if (theFunne)
@@ -4017,7 +4002,8 @@ class PlayState extends MusicBeatState
 							}
 							else
 							{
-								health -= 0.025;
+								if (!daNote.isSustainNote)
+									health -= 0.025;
 								vocals.volume = 0;
 								if (theFunne)
 									noteMiss(daNote.noteData, daNote);
@@ -4259,11 +4245,11 @@ class PlayState extends MusicBeatState
 						if (SONG.song.toLowerCase() == 'entity')
 							health += 0.002;
 						else if (health < 2)
-							health += 0.04;
-						else if (health < 2 && storyDifficulty == 2)
 							health += 0.02;
-						else if (health < 2 && storyDifficulty == 3)
+						else if (health < 2 && storyDifficulty == 2)
 							health += 0.01;
+						else if (health < 2 && storyDifficulty == 3)
+							health += 0.005;
 
 
 						if (FlxG.save.data.accuracyMod == 0)
@@ -4284,12 +4270,12 @@ class PlayState extends MusicBeatState
 						if (SONG.song.toLowerCase() == 'entity')
 							health += 0.005;
 						else if (health < 2)
-							health += 0.06;
+							health += 0.04;
 						else if (health < 2 && storyDifficulty == 2)
-							health += 0.03;
+							health += 0.01;
 
 						else if (health < 2 && storyDifficulty == 3)
-							health += 0.015;
+							health += 0.005;
 				
 							
 
@@ -4820,7 +4806,7 @@ class PlayState extends MusicBeatState
 	{
 		if (!boyfriend.stunned)
 		{
-			health -= 0.04;
+			health -= 0.03;
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
@@ -4963,6 +4949,11 @@ class PlayState extends MusicBeatState
 
 		function goodNoteHit(note:Note, resetMashViolation = true):Void
 			{
+
+				if(SONG.song.toLowerCase() != 'entity')
+					if (note.noteType == 0 || note.noteType == 1 )
+					health += 0.0175;
+
 
 				if (mashing != 0)
 					mashing = 0;

@@ -24,6 +24,9 @@ class Note extends FlxSprite
 	public var wasGoodHit:Bool = false;
 	public var prevNote:Note;
 	public var modifiedByLua:Bool = false;
+	public var modAngle:Float = 0; // The angle set by modcharts
+	public var localAngle:Float = 0; // The angle to be edited inside Note.hx
+	public var originAngle:Float = 0; // The angle the OG note of the sus note had (?)
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
 	public var noteType:Int = 0;
@@ -35,6 +38,7 @@ class Note extends FlxSprite
 	public static var GREEN_NOTE:Int = 2;
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
+	public var isParent:Bool = false;
 
 	public var rating:String = "shit";
 
@@ -616,6 +620,10 @@ class Note extends FlxSprite
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (!modifiedByLua)
+			angle = modAngle + localAngle;
+		else
+			angle = modAngle;
 
 		if (mustPress)
 		{
