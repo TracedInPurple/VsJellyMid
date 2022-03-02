@@ -1676,8 +1676,10 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 		hotbar.cameras = [camHUD];
+
 		if(SONG.song.toLowerCase() == 'entity')
 			vignette.cameras = [camHUD];
+
 		if (FlxG.save.data.songPosition)
 		{
 			songPosBG.cameras = [camHUD];
@@ -1694,6 +1696,8 @@ class PlayState extends MusicBeatState
 
 		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
+
+		
 
 		if (isStoryMode)
 		{
@@ -1830,6 +1834,60 @@ class PlayState extends MusicBeatState
 	#if windows
 	public static var luaModchart:ModchartState = null;
 	#end
+
+	//var funnyNyomHappened = false;
+	//public function funnyNyom() 
+	//{
+	//	if (funnyNyomHappened) return;
+	//	funnyNyomHappened = true;
+		//camHUD.alpha = 0;
+//
+		////doing some weird shit for Fancy HUD movement
+		//healthBar.y += 200;
+		//healthBarBG.y += 200;
+		//healthBarBGG.y += 200;
+		//iconP1.y += 200;
+		//iconP2.y += 200;
+		//scoreTxt.y += 200;
+//
+		//hotbar.x += 300;
+//
+		//songPosBG.y -= 400;
+		//songPosBar.y -= 400;
+		//songPosXP.y -= 400;
+//
+		//// this very dumb i think BUT HEY works nontheless
+		//if (!isStoryMode)
+		//{
+		//	FlxTween.tween(healthBar, {y: healthBar.y -= 200}, 2, {ease: FlxEase.backInOut});
+		//	FlxTween.tween(healthBarBG, {y: healthBarBG.y -= 200}, 2, {ease: FlxEase.backInOut});
+		//	FlxTween.tween(healthBarBGG, {y: healthBarBGG.y -= 200}, 2, {ease: FlxEase.backInOut});
+		//	FlxTween.tween(iconP1, {y: iconP1.y -= 200}, 2, {ease: FlxEase.backInOut});
+		//	FlxTween.tween(iconP2, {y: iconP2.y -= 200}, 2, {ease: FlxEase.backInOut});
+		//	FlxTween.tween(scoreTxt, {y: scoreTxt.y -= 200}, 2, {ease: FlxEase.backInOut});
+////
+		//	FlxTween.tween(songPosBG, {y: songPosBG.y += 400}, 2, {ease: FlxEase.backInOut});
+		//	FlxTween.tween(songPosBar, {y: songPosBar.y += 400}, 2, {ease: FlxEase.backInOut});
+		//	FlxTween.tween(songPosXP, {y: songPosXP.y += 400}, 2, {ease: FlxEase.backInOut});
+//
+		//	FlxTween.tween(hotbar, {x: hotbar.x -= 300}, 2, {ease: FlxEase.backInOut});
+//
+		//	FlxTween.tween(camHUD, {alpha: 1}, 0.4, {ease: FlxEase.backInOut, startDelay: 0.2});
+		//}
+
+	//	for (elem in [healthBar, iconP1, iconP2, scoreTxt, healthBarBG, healthBarBGG]) 
+	//	{
+	//		if (elem != null) {
+	//			var oldElemY = elem.y;
+	//			var oldAlpha = elem.alpha;
+	//			elem.alpha = 0;
+	//			FlxTween.tween(elem, {y : oldElemY, alpha : oldAlpha}, 0.75, {ease : FlxEase.quartInOut});
+	//		}
+	//		elem.visible = true;
+	//	}
+
+	//}
+
 
 	function startCountdown():Void
 	{
@@ -2033,6 +2091,8 @@ class PlayState extends MusicBeatState
 			swagCounter += 1;
 			// generateSong('fresh');
 		}, 5);
+
+		//funnyNyom();
 	}
 
 	var previousFrameTime:Int = 0;
