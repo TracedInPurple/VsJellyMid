@@ -656,6 +656,27 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
+			case 'sheeb':
+				iconColor = 'FFFF4800';
+				frames = Paths.getSparrowAtlas('characters/sheeb');
+				animation.addByPrefix('idle', 'sheeb idle', 24, false);
+				animation.addByPrefix('singUP', 'sheeb up', 24, false);
+				animation.addByPrefix('singLEFT', 'sheeb left', 24, false);
+				animation.addByPrefix('singRIGHT', 'sheeb right', 24, false);
+				animation.addByPrefix('singDOWN', 'sheeb down', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -232, -260);
+				addOffset("singRIGHT", -244, -254);
+				addOffset("singLEFT", -215, -260);
+				addOffset("singDOWN", -232, -254);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 5.8));
+				updateHitbox();
+
+				antialiasing = false;
 			case 'irfan':
 				iconColor = 'FF32CD32';
 				frames = Paths.getSparrowAtlas('characters/irfan');
