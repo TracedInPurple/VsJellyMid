@@ -5734,11 +5734,24 @@ class PlayState extends MusicBeatState
 
 
 		if (curBeat % gfSpeed == 0) 
-			{
+		{
 			curBeat % (gfSpeed * 2) == 0 ? 
 			{
-				iconP1.scale.set(1.1, 0.8);
-				iconP2.scale.set(1.1, 1.3);
+				if(boyfriend.curCharacter == 'bfminecraft')
+					{
+						iconP1.scale.set(1.1, 0.8);
+						FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});	
+					}
+				else 
+					iconP1.scale.set(1.1, 0.8);
+
+				if(dad.curCharacter == 'sheeb')
+					{
+						iconP2.scale.set(1.1, 0.8);
+						FlxTween.angle(iconP2, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+					}
+				else
+					iconP2.scale.set(1.1, 1.3);
 				//FlxTween.angle(iconP2, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 				//FlxTween.angle(iconP1, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 			} 

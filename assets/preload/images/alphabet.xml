@@ -326,10 +326,10 @@
 	<SubTexture name="_0001" x="0" y="4188" width="48" height="16"/>
 	<SubTexture name="_0002" x="0" y="4188" width="48" height="16"/>
 	<SubTexture name="_0003" x="0" y="4188" width="48" height="16"/>
-	<SubTexture name="a lowercase0000" x="0" y="0" width="48" height="64"/>
-	<SubTexture name="a lowercase0001" x="0" y="0" width="48" height="64"/>
-	<SubTexture name="a lowercase0002" x="0" y="0" width="48" height="64"/>
-	<SubTexture name="a lowercase0003" x="0" y="0" width="48" height="64"/>
+	<SubTexture name="a lowercase0000" x="0" y="364" width="48" height="64"/>
+	<SubTexture name="a lowercase0001" x="0" y="364" width="48" height="64"/>
+	<SubTexture name="a lowercase0002" x="0" y="364" width="48" height="64"/>
+	<SubTexture name="a lowercase0003" x="0" y="364" width="48" height="64"/>
 	<SubTexture name="angry faic0000" x="0" y="0" width="48" height="64"/>
 	<SubTexture name="angry faic0001" x="0" y="0" width="48" height="64"/>
 	<SubTexture name="angry faic0002" x="0" y="0" width="48" height="64"/>
@@ -394,10 +394,10 @@
 	<SubTexture name="i  lowercase0001" x="0" y="0" width="48" height="64"/>
 	<SubTexture name="i  lowercase0002" x="0" y="641" width="48" height="64"/>
 	<SubTexture name="i  lowercase0003" x="0" y="641" width="48" height="64"/>
-	<SubTexture name="j  lowercase0000" x="0" y="0" width="48" height="64"/>
-	<SubTexture name="j  lowercase0001" x="0" y="0" width="48" height="64"/>
-	<SubTexture name="j  lowercase0002" x="0" y="0" width="48" height="64"/>
-	<SubTexture name="j  lowercase0003" x="0" y="0" width="48" height="64"/>
+	<SubTexture name="j  lowercase0000" x="0" y="868" width="48" height="64"/>
+	<SubTexture name="j  lowercase0001" x="0" y="868" width="48" height="64"/>
+	<SubTexture name="j  lowercase0002" x="0" y="868" width="48" height="64"/>
+	<SubTexture name="j  lowercase0003" x="0" y="868" width="48" height="64"/>
 	<SubTexture name="k  lowercase0000" x="0" y="0" width="48" height="64"/>
 	<SubTexture name="k  lowercase0001" x="0" y="0" width="48" height="64"/>
 	<SubTexture name="k  lowercase0002" x="488" y="0" width="48" height="64"/>
