@@ -211,7 +211,6 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 				flipX = true;
-
 			case 'bfminecraft':
 				frames = Paths.getSparrowAtlas('characters/bfMinecraft');
 				animation.addByPrefix('idle', 'bfMinecraft Idle', 24, false);
