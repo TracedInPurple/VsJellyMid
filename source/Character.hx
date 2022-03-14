@@ -659,7 +659,8 @@ class Character extends FlxSprite
 			case 'sheeb':
 				iconColor = 'FFFF4800';
 				frames = Paths.getSparrowAtlas('characters/sheeb');
-				animation.addByPrefix('idle', 'sheeb idle', 24, false);
+				animation.addByIndices('danceLeft', 'sheeb idle', [0, 1, 2, 3, 4, 5, 6, 7, 8], "", 24, false);
+				animation.addByIndices('danceRight', 'sheeb idle', [9, 10, 11, 12, 13, 14, 15], "", 24, false);
 				animation.addByPrefix('singUP', 'sheeb up', 24, false);
 				animation.addByPrefix('singLEFT', 'sheeb left', 24, false);
 				animation.addByPrefix('singRIGHT', 'sheeb right', 24, false);
@@ -924,7 +925,7 @@ class Character extends FlxSprite
 							playAnim('danceLeft');
 					}
 
-				case 'spooky':
+				case 'sheeb':
 					danced = !danced;
 
 					if (danced)
