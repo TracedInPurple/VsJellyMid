@@ -869,6 +869,23 @@ class PlayState extends MusicBeatState
 					tf2.setGraphicSize(Std.int(tf2.width * 6.5));
 					add(tf2);
 			}
+			case 'fnmbg':
+			{
+					curStage = 'fnmbg';
+
+					defaultCamZoom = 0.96;
+					camMovement = 0.2;
+
+					var repositionShit = -200;
+
+					var fnmbg:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('fnmbg/bg'));
+					fnmbg.y -= 150;
+					fnmbg.x -= 350;
+					fnmbg.setGraphicSize(Std.int(fnmbg.width * 5.5));
+					add(fnmbg);
+
+					fnmbg.updateHitbox();
+			}
 			case 'mcsm':
 			{
 					curStage = 'mcsm';
@@ -1317,6 +1334,11 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 130;
 				gf.x += 180;
 				gf.y += 340;
+			case 'fnmbg':
+				boyfriend.x += 200;
+				boyfriend.y += 215;
+				gf.x += 180;
+				gf.y += 340;
 			case 'mcsm':
 				boyfriend.x -= 120;
 				boyfriend.y -= 75;
@@ -1353,7 +1375,7 @@ class PlayState extends MusicBeatState
 
 		add(gf);
 
-		if (curStage == 'mine' || curStage == 'cave' || curStage == 'espionage' || curStage == 'dev' || curStage == 'tutorial' || curStage == 'endless')
+		if (curStage == 'mine' || curStage == 'cave' || curStage == 'fnmbg' || curStage == 'espionage' || curStage == 'dev' || curStage == 'tutorial' || curStage == 'endless')
 		{
 			remove(gf);
 		}
@@ -1925,6 +1947,7 @@ class PlayState extends MusicBeatState
 			introAssets.set('house', ['ready', "set", "go"]);
 			introAssets.set('entity', ['ready', "set", "go"]);
 			introAssets.set('mine', ['ready', "set", "go"]);
+			introAssets.set('fnmbg', ['ready', "set", "go"]);
 			introAssets.set('cave', ['ready', "set", "go"]);
 			introAssets.set('notch', ['ready', "set", "go"]);
 			introAssets.set('lost', ['ready', "set", "go"]);
@@ -3710,6 +3733,10 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 280 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 350 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.7;
+					case 'fnmbg':
+						camFollow.x = boyfriend.getMidpoint().x - 280;
+						camFollow.y = boyfriend.getMidpoint().y - 240;
+						defaultCamZoom = 0.8;
 					case 'mcsm':
 						camFollow.x = boyfriend.getMidpoint().x - 75 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 150 + bfnoteMovementYoffset;
