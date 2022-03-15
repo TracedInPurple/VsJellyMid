@@ -268,6 +268,12 @@ class PlayState extends MusicBeatState
 
 	var hurtIcon:Bool = false;
 	var strengthActive:Bool = false;
+
+	public var karmaActive = false;
+
+	var songStartDim:FlxSprite;
+	var songStartText:FlxText;
+
 	
 	
 	private var hero:Float = 0;
@@ -1518,6 +1524,8 @@ class PlayState extends MusicBeatState
 		//}
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()));
+		//FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / 60));
+
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		FlxG.camera.focusOn(camFollow.getPosition());
@@ -1538,22 +1546,7 @@ class PlayState extends MusicBeatState
 				songPosBar = new FlxBar(songPosBG.x + 4, songPosBG.y + 4, LEFT_TO_RIGHT, Std.int(songPosBG.width - 8), Std.int(songPosBG.height - 8), this,
 					'songPositionBar', 0, 90000);
 				songPosBar.scrollFactor.set();
-				if(dad.curCharacter == 'notch')
-					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#F5EE00'));
-				else if(dad.curCharacter == 'tuxsteve' || dad.curCharacter == 'tuxsteveuoh' || dad.curCharacter == 'steve-armor' || dad.curCharacter == 'stevehorse' || dad.curCharacter == 'tuxstevewhatever')
-					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#0055D6'));
-				else if(dad.curCharacter == 'alex' || dad.curCharacter == 'alexnormal' || dad.curCharacter == 'alexchill' || dad.curCharacter == 'alexpickaxe' || dad.curCharacter == 'alexpickaxemad')
-					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#9AFF9A'));
-				else if(dad.curCharacter == 'irfan')
-					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#32CD32'));
-				else if(dad.curCharacter == 'jaziel')
-					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF0000'));
-				else if(dad.curCharacter == 'bos')
-					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF8008'));
-				else if(dad.curCharacter == '303')
-					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#FF0000'));
-				else
-					songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#03AAF9'));
+				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#' + dad.iconColor));
 				add(songPosBar);
 
 				if (dad.curCharacter == '303')
@@ -2108,6 +2101,7 @@ class PlayState extends MusicBeatState
 
 	function startSong():Void
 	{
+		trace('song started');
 		startingSong = false;
 		songStarted = true;
 		previousFrameTime = FlxG.game.ticks;
@@ -2189,6 +2183,85 @@ class PlayState extends MusicBeatState
 			songName.cameras = [camHUD];
 		}
 
+			songStartDim = new FlxSprite(0, 0).makeGraphic(1280, 720, FlxColor.BLACK);
+			songStartDim.alpha = 0.5;
+			songStartDim.scrollFactor.set();
+			songStartDim.updateHitbox();
+			songStartDim.screenCenter();
+			songStartDim.cameras = [camHUD];
+			add(songStartDim);
+
+			songStartText = new FlxText(0, 0, FlxG.width, "", 20);
+			songStartText.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			switch (SONG.song.toLowerCase())
+			{
+				case 'practice':
+					songStartText.text = 'Now Playing: Practice - TheGaboDiaz';
+
+				case 'uoh':
+					songStartText.text = 'Now Playing: Uoh - TheGaboDiaz';
+
+				case 'craft away':
+					songStartText.text = 'Now Playing: Craft Away - TheGaboDiaz';
+
+				case 'suit up':
+					songStartText.text = 'Now Playing: Suit Up - TheGaboDiaz';
+
+				case 'whatever':
+					songStartText.text = 'Now Playing: Whatever - TheGaboDiaz';
+				
+				case 'overseen':
+					songStartText.text = 'Now Playing: Overseen - TracedInPurple';
+			
+				case 'mine':
+					songStartText.text = 'Now Playing: Mine - TheGaboDiaz';
+
+				case 'iron picks':
+					songStartText.text = 'Now Playing: Iron Picks - TracedInPurple';
+
+				case 'copper':
+					songStartText.text = 'Now Playing: Copper - TracedInPurple';
+
+				case 'underrated':
+					songStartText.text = 'Now Playing: Underrated - TheGaboDiaz';
+				
+				case 'tick tock':
+					songStartText.text = 'Now Playing: Tick Tock - TheGaboDiaz';
+
+				case 'gapple':
+					songStartText.text = 'Now Playing: Gapple - TheGaboDiaz';
+
+				case 'retired':
+					songStartText.text = 'Now Playing: Retired - TheGaboDiaz';
+
+				case 'revenge':
+					songStartText.text = 'Now Playing: Revenge - TracedInPurple';
+
+				case 'espionage':
+					songStartText.text = 'Now Playing: Espionage - TheGaboDiaz';
+
+				case 'bos':
+					songStartText.text = 'Now Playing: Bos - TheGaboDiaz';
+
+				case 'bonk':
+					songStartText.text = 'Now Playing: Bonk - TracedInPurple & TheGaboDiaz';
+				
+				case 'kick':
+					songStartText.text = 'Now Playing: Kick - TheGaboDiaz & Shibecicle';
+
+				case 'purple traces':
+					songStartText.text = 'Now Playing: Purple Traces - TracedInPurple';
+			}
+			
+			songStartText.borderSize = 1;
+			songStartText.scrollFactor.set();
+			songStartText.updateHitbox();
+			songStartText.screenCenter();
+			songStartText.y += 270;
+			songStartText.scale.set(1.5, 1.5);
+			songStartText.cameras = [camHUD];
+			add(songStartText);
+
 
 		#if windows
 		// Updating Discord Rich Presence (with Time Left)
@@ -2201,6 +2274,7 @@ class PlayState extends MusicBeatState
 	private function generateSong(dataPath:String):Void
 	{
 		// FlxG.log.add(ChartParser.parse());
+		trace('doing start song');
 
 		var songData = SONG;
 		Conductor.changeBPM(songData.bpm);
@@ -5131,39 +5205,52 @@ class PlayState extends MusicBeatState
 
 		var healthLost:Float = 0;
 
+		var healthBarColorActive = false;
+
 
 		function PoisonDrain():Void
 		{
-			if(storyDifficulty == 2)
-				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF66298C);
-			else
-				healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF2B4505);
+			if(healthBarColorActive == false)
+			{
+				healthBarColorActive = true;
+
+				if(storyDifficulty == 2)
+					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF66298C);
+				else
+					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF2B4505);
+			}
+			
 			new FlxTimer().start(0.3, function(swagTimer:FlxTimer)
 			{
-				if(!paused)
+				if(health > 0.1)
 				{
-					health -= 0.05;
-					healthLost += 0.05;
+					if(!paused)
+						{	
+							health -= 0.05;
+							healthLost += 0.05;
+						}
 				}
+
+				if(health < 0.1)
+					//just to play safe WE ADD a number above 0.75
+					healthLost += 2; //change to number above 0.75 for it to stop
 				
 				if (healthLost < 0.75)
 				{
 					swagTimer.reset();
 				}
-				else if (health < 0.1)
-				{
-					healthLost = 0;
-					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
-				}
 				else 
 				{
 					healthLost = 0;
 					healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), FlxColor.fromString('#' + boyfriend.iconColor));
+					healthBarColorActive = false;
 				}
 
 			});
 
 		}
+
+
 		function WitherDrain():Void
 		{
 			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFF3e0707);
