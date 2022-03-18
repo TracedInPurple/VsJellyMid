@@ -147,6 +147,11 @@ class PlayState extends MusicBeatState
 	private var healthBarBGG:FlxSprite;
 	private var healthBarBG:FlxSprite;
 	private var healthBar:FlxBar;
+
+	private var xp:Float = 0;
+	private var xpBarEmpty:FlxSprite;
+	private var xpBar:FlxBar;
+	private var xpBarFull:FlxSprite;
 	private var songPositionBar:Float = 0;
 
 	private var generatedMusic:Bool = false;
@@ -1675,6 +1680,27 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 
+		//createImageBar(?empty:Null<FlxGraphicAsset>, ?fill:Null<FlxGraphicAsset>, emptyBackground:FlxColor = FlxColor.BLACK, fillBackground:FlxColor = FlxColor.LIME):FlxBar
+
+
+		xpBarEmpty = new FlxSprite(1020, 0).loadGraphic(Paths.image('xpBarEmpty'));
+		xpBarEmpty.screenCenter(Y);
+		xpBarEmpty.scrollFactor.set();
+		add(xpBarEmpty);
+//  																					FOR WIDTH AND HEIGHT LOWER IT TO FOR THE TEXTURES
+		xpBar = new FlxBar(xpBarEmpty.x, xpBarEmpty.y, BOTTOM_TO_TOP, 5, 92, this, 'xp', 0, 100);
+		xpBar.scrollFactor.set();
+		xpBar.createFilledBar(FlxColor.fromString('#' + '8FD15D'), 0x00000000);
+
+		//pBar
+		add(xpBar);
+
+
+		//XP BAR SHIT
+		xpBarFull = new FlxSprite(xpBarEmpty.x, xpBarEmpty.y).loadGraphic(Paths.image('xpBarFull'));
+		xpBarFull.alpha = 0.65;
+		xpBarFull.scrollFactor.set();
+		add(xpBarFull);
 		
 		if(SONG.song.toLowerCase() == 'entity')
 		{
@@ -1695,6 +1721,9 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 		hotbar.cameras = [camHUD];
+		xpBar.cameras = [camHUD];
+		xpBarEmpty.cameras = [camHUD];
+		xpBarFull.cameras = [camHUD];
 
 		if(SONG.song.toLowerCase() == 'entity')
 			vignette.cameras = [camHUD];
@@ -2207,7 +2236,7 @@ class PlayState extends MusicBeatState
 		}
 
 			songStartDim = new FlxSprite(0, 0).makeGraphic(1280, 720, FlxColor.BLACK);
-			songStartDim.alpha = 0.5;
+			songStartDim.alpha = 0;
 			songStartDim.scrollFactor.set();
 			songStartDim.updateHitbox();
 			songStartDim.screenCenter();
@@ -2278,6 +2307,7 @@ class PlayState extends MusicBeatState
 			
 			songStartText.borderSize = 1;
 			songStartText.scrollFactor.set();
+			songStartText.alpha = 0;
 			songStartText.updateHitbox();
 			songStartText.screenCenter();
 			songStartText.y += 270;
@@ -2285,12 +2315,44 @@ class PlayState extends MusicBeatState
 			songStartText.cameras = [camHUD];
 			add(songStartText);
 
+			songStartTextStartTween();
+
+			new FlxTimer().start(2, function(tmr:FlxTimer)
+				{
+					songStartTextEndTween();
+				});
+
 
 		#if windows
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
 		#end
 	}
+	function songStartTextStartTween() {
+	
+		FlxTween.tween(songStartText, {alpha: 1}, 1, {ease: FlxEase.cubeInOut});
+
+		FlxTween.tween(songStartDim, {alpha: 0.5}, 1, {ease: FlxEase.cubeInOut});
+	}
+	function songStartTextEndTween() {
+
+		FlxTween.tween(songStartText, {alpha: 0}, 2, {
+			ease: FlxEase.cubeInOut,
+			onComplete: function(twn:FlxTween)
+			{
+				songStartText.destroy();
+			}
+		});
+
+		FlxTween.tween(songStartDim, {alpha: 0}, 2, {
+			ease: FlxEase.cubeInOut,
+			onComplete: function(twn:FlxTween)
+			{
+				songStartDim.destroy();
+			}
+		});
+
+}
 
 	var debugNum:Int = 0;
 
