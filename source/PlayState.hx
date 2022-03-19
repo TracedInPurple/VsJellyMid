@@ -1241,7 +1241,7 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'sheeb':
 				dad.x -= 140;
-				dad.y += 60;
+				dad.y += 275;
 				camPos.set(dad.getGraphicMidpoint().x + 310, dad.getGraphicMidpoint().y);
 			case 'irfan':
 				dad.x -= 170;
@@ -3796,8 +3796,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 350 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.7;
 					case 'fnmbg':
-						camFollow.x = boyfriend.getMidpoint().x - 280;
-						camFollow.y = boyfriend.getMidpoint().y - 240;
+						camFollow.x = boyfriend.getMidpoint().x - 280 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 350 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.8;
 					case 'mcsm':
 						camFollow.x = boyfriend.getMidpoint().x - 75 + bfnoteMovementXoffset;
