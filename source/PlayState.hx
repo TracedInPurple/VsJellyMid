@@ -1683,23 +1683,32 @@ class PlayState extends MusicBeatState
 		//createImageBar(?empty:Null<FlxGraphicAsset>, ?fill:Null<FlxGraphicAsset>, emptyBackground:FlxColor = FlxColor.BLACK, fillBackground:FlxColor = FlxColor.LIME):FlxBar
 
 
-		xpBarEmpty = new FlxSprite(1020, 0).loadGraphic(Paths.image('xpBarEmpty'));
-		xpBarEmpty.screenCenter(Y);
+		xpBarEmpty = new FlxSprite(1020, 0).loadGraphic(Paths.image('XPBarEmpty', 'shared'));
+		xpBarEmpty.screenCenter();
+		xpBarEmpty.x += 530;
+		xpBarEmpty.y -= 40;
 		xpBarEmpty.scrollFactor.set();
+		xpBarEmpty.scale.set(3,3);
+		xpBarEmpty.updateHitbox();
 		add(xpBarEmpty);
 //  																					FOR WIDTH AND HEIGHT LOWER IT TO FOR THE TEXTURES
-		xpBar = new FlxBar(xpBarEmpty.x, xpBarEmpty.y, BOTTOM_TO_TOP, 5, 92, this, 'xp', 0, 100);
+		xpBar = new FlxBar(xpBarEmpty.x, xpBarEmpty.y, BOTTOM_TO_TOP, 3, 90, this, 'xp', 0, 100);
 		xpBar.scrollFactor.set();
-		xpBar.createFilledBar(FlxColor.fromString('#' + '8FD15D'), 0x00000000);
-
-		//pBar
+		xpBar.scale.set(3,3);
+		xpBar.x += 3;
+		xpBar.y += 3;
+		xpBar.createFilledBar(0x00000000, FlxColor.fromString('#' + '8FD15D'));
+		//xpBar.createImageBar(Paths.image('xpBarEmtpy'), Paths.image('xpBarFullColored'), 0x00000000, 0x00000000);
+		xpBar.updateHitbox();
 		add(xpBar);
 
 
-		//XP BAR SHIT
-		xpBarFull = new FlxSprite(xpBarEmpty.x, xpBarEmpty.y).loadGraphic(Paths.image('xpBarFull'));
-		xpBarFull.alpha = 0.65;
+	////XP BAR SHIT
+		xpBarFull = new FlxSprite(xpBarEmpty.x, xpBarEmpty.y).loadGraphic(Paths.image('XPBarFull', 'shared'));
+		xpBarFull.alpha = 0.6;
+		xpBarFull.scale.set(3,3);
 		xpBarFull.scrollFactor.set();
+		xpBarFull.updateHitbox();
 		add(xpBarFull);
 		
 		if(SONG.song.toLowerCase() == 'entity')
@@ -1721,8 +1730,8 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 		hotbar.cameras = [camHUD];
-		xpBar.cameras = [camHUD];
 		xpBarEmpty.cameras = [camHUD];
+		xpBar.cameras = [camHUD];
 		xpBarFull.cameras = [camHUD];
 
 		if(SONG.song.toLowerCase() == 'entity')
@@ -5210,6 +5219,8 @@ class PlayState extends MusicBeatState
 				if(SONG.song.toLowerCase() != 'entity')
 					if (note.noteType == 0 || note.noteType == 1 )
 					health += 0.0175;
+				
+				xp += 1;
 
 
 				if (mashing != 0)
