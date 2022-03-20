@@ -86,7 +86,8 @@ class Credits extends MusicBeatState
 			if(isSelectable) 
             {				
                 var icon:AttachedSprite = new AttachedSprite('crediticons/' + creditsStuff[i][1]);
-                icon.xAdd = optionText.width + 5;
+                icon.xAdd = optionText.width + 10;
+				icon.yAdd = optionText.height - 5;
 			    icon.sprTracker = optionText;
 	
 				// using a FlxGroup is too much fuss!

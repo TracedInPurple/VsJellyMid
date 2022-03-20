@@ -281,6 +281,15 @@ class PlayState extends MusicBeatState
 	var songStartDim:FlxSprite;
 	var songStartText:FlxText;
 
+	private var bgColors:Array<String> = [
+		'#6495ed',
+		'#f1c232',
+		'#03a613',
+		'#d74c2d'
+	];
+
+	private var colorRotation:Int = 1;
+
 	
 	
 	private var hero:Float = 0;
@@ -934,7 +943,7 @@ class PlayState extends MusicBeatState
 			{
 					curStage = 'lost';
 
-					defaultCamZoom = 0.7;
+					defaultCamZoom = 0.9;
 					camMovement = 0.2;
 
 					var repositionShit = -200;
@@ -1504,9 +1513,9 @@ class PlayState extends MusicBeatState
 
 
 		if(SONG.song.toLowerCase() == 'espionage')
-			{
-				dad.alpha = 0;
-			}
+		{
+			dad.alpha = 0;
+		}
 			
 		if (loadRep)
 		{
@@ -1701,8 +1710,8 @@ class PlayState extends MusicBeatState
 
 		xpBarEmpty = new FlxSprite(1020, 0).loadGraphic(Paths.image('XPBarEmpty', 'shared'));
 		xpBarEmpty.screenCenter();
-		xpBarEmpty.x += 530;
-		xpBarEmpty.y -= 40;
+		xpBarEmpty.x += 540;
+		xpBarEmpty.y -= 35;
 		xpBarEmpty.scrollFactor.set();
 		xpBarEmpty.scale.set(3,3);
 		xpBarEmpty.updateHitbox();
@@ -2335,17 +2344,19 @@ class PlayState extends MusicBeatState
 			songStartText.alpha = 0;
 			songStartText.updateHitbox();
 			songStartText.screenCenter();
-			songStartText.y += 270;
+			songStartText.y += 210;
 			songStartText.scale.set(1.5, 1.5);
 			songStartText.cameras = [camHUD];
 			add(songStartText);
 
+			
+
 			songStartTextStartTween();
 
 			new FlxTimer().start(2, function(tmr:FlxTimer)
-				{
-					songStartTextEndTween();
-				});
+			{
+				songStartTextEndTween();
+			});
 
 
 		#if windows
@@ -2357,7 +2368,17 @@ class PlayState extends MusicBeatState
 	
 		FlxTween.tween(songStartText, {alpha: 1}, 1, {ease: FlxEase.cubeInOut});
 
-		FlxTween.tween(songStartDim, {alpha: 0.5}, 1, {ease: FlxEase.cubeInOut});
+		//new FlxTimer().start(1, function(tmr:FlxTimer)
+		//{
+		//	FlxTween.color(songStartText, 1.5, FlxColor.WHITE, FlxColor.fromString('#106b0e'));
+		//});
+//
+		//new FlxTimer().start(3, function(tmr:FlxTimer)
+		//{
+		//	FlxTween.color(songStartText, 1.5, songStartText.color, FlxColor.fromString('#f1c232'));
+		//});
+
+		FlxTween.tween(songStartDim, {alpha: 0.3}, 1, {ease: FlxEase.cubeInOut});
 	}
 	function songStartTextEndTween() {
 
@@ -2366,6 +2387,7 @@ class PlayState extends MusicBeatState
 			onComplete: function(twn:FlxTween)
 			{
 				songStartText.destroy();
+				//songStartText.visible = false;
 			}
 		});
 
@@ -3286,17 +3308,19 @@ class PlayState extends MusicBeatState
 
 		if (SONG.song.toLowerCase() != 'practice' || SONG.song.toLowerCase() != 'entity')
 		{
+			if(xp == 100)
+				{
+					if(FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUse == false)
+					{
+						if(SONG.song.toLowerCase() == 'suit up')
+							hotbar.animation.play('Potion', true);
+						else 
+							hotbar.animation.play('PotionNoShield', true);
 			
-			if(FlxG.keys.anyJustPressed([FlxKey.fromString(FlxG.save.data.regenPotionBind)]) && oneTimeUse == false)
-			{
-				if(SONG.song.toLowerCase() == 'suit up')
-					hotbar.animation.play('Potion', true);
-				else 
-					hotbar.animation.play('PotionNoShield', true);
-
-				FlxG.sound.play(Paths.sound('misc/drink'), 0.75);
-				Regen();
-			}
+						FlxG.sound.play(Paths.sound('misc/drink'), 0.75);
+						Regen();
+					}
+				}
 		}
 		
 		/*
@@ -3531,6 +3555,12 @@ class PlayState extends MusicBeatState
 
 		if (health > 2)
 			health = 2;
+
+		if (xp > 100)
+			xp = 100;
+
+		if (xp < 0)
+			xp = 0;
 		
 		if (healthBar.percent < 20)
 			iconP1.animation.curAnim.curFrame = 1;
@@ -3809,13 +3839,13 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 360;
 						defaultCamZoom = 0.9;
 					case 'lost':
-						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
-						camFollow.y = boyfriend.getMidpoint().y - 305 + bfnoteMovementYoffset;
-						defaultCamZoom = 0.9;
+						camFollow.x = boyfriend.getMidpoint().x - 300 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 210 + bfnoteMovementYoffset;
+						defaultCamZoom = 1.3;
 					case 'tutorial':
 						camFollow.x = boyfriend.getMidpoint().x - 400 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 400 + bfnoteMovementYoffset;
-						defaultCamZoom = 0.7;
+						defaultCamZoom = 1.5;
 					case 'tf2':
 						camFollow.x = boyfriend.getMidpoint().x - 280 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 350 + bfnoteMovementYoffset;
@@ -5089,6 +5119,7 @@ class PlayState extends MusicBeatState
 		if (!boyfriend.stunned)
 		{
 			health -= 0.03;
+			xp -= 2;
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
@@ -5392,10 +5423,28 @@ class PlayState extends MusicBeatState
 
 		var oneTimeUse:Bool = false;
 		var healthGain:Float = 0;
+		var xpLoss:Float = 0;
 
 		function Regen():Void
 		{
 			oneTimeUse = true;
+			new FlxTimer().start(0.02, function(swagTimer:FlxTimer)
+			{
+				if(!paused)
+				{
+					xp -= 2;
+					xpLoss += 2;
+				}
+				
+				if (xpLoss < 100)
+				{
+					swagTimer.reset(); 
+				}
+				else
+				{
+					xpLoss = 0;
+				}
+			});
 			healthBar.createFilledBar(FlxColor.fromString('#' + dad.iconColor), 0xFFFF75A7);
 
 			new FlxTimer().start(0.0075, function(swagTimer:FlxTimer)
@@ -5607,6 +5656,7 @@ class PlayState extends MusicBeatState
 				trace('tap');
 				pressedSpace = true;
 				detectAttack = false;
+				xp -= 10;
 			}
 		}
 
@@ -5635,11 +5685,37 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
+		if(SONG.song.toLowerCase() == 'practice')
+		{
+			switch(curStep)
+			{
+				case 112:
+					camZooming = true;
+				case 256:
+					camZooming = false;
+				case 272:
+					camZooming = true;
+				case 304:
+					camZooming = false;
+				case 384:
+					camZooming = true;
+				case 400:
+					camZooming = false;
+				case 416:
+					camZooming = true;
+				case 432:
+					camZooming = false;
+				case 512:
+					camZooming = true;
+
+			}
+		}
+
+
 		if(SONG.song.toLowerCase() == 'entity')
 		{
 			switch (curStep)
 			{
-
 				case 566:
 					new FlxTimer().start(0.001, function(tmr:FlxTimer)
 						{
