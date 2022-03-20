@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="nylu.png"><SubTexture name="nylu idle0000" x="0" y="0" width="124" height="125" frameX="0" frameY="0" frameWidth="124" frameHeight="125" />
+<SubTexture name="nylu idle0001" x="124" y="0" width="124" height="125" frameX="0" frameY="0" frameWidth="124" frameHeight="125" />
+<SubTexture name="nylu idle0002" x="0" y="125" width="124" height="125" frameX="0" frameY="0" frameWidth="124" frameHeight="125" />
+<SubTexture name="nylu idle0003" x="124" y="125" width="124" height="125" frameX="0" frameY="0" frameWidth="124" frameHeight="125" />
+<SubTexture name="nylu idle0004" x="0" y="250" width="124" height="125" frameX="0" frameY="0" frameWidth="124" frameHeight="125" />
+<SubTexture name="nylu idle0005" x="124" y="250" width="124" height="125" frameX="0" frameY="0" frameWidth="124" frameHeight="125" />
+</TextureAtlas>
