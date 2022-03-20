@@ -188,6 +188,8 @@ class PlayState extends MusicBeatState
 	var notchStanding:FlxSprite; 
 	var gfminecraft:FlxSprite; 
 	var irfan:FlxSprite; 
+	var dipstick:FlxSprite; 
+	var nylu:FlxSprite; 
 	var vignette:FlxSprite; 
 	var fc:Bool = true;
 
@@ -888,6 +890,20 @@ class PlayState extends MusicBeatState
 					fnmbg.x -= 350;
 					fnmbg.setGraphicSize(Std.int(fnmbg.width * 5.5));
 					add(fnmbg);
+
+					dipstick = new FlxSprite(310, 330);
+				    dipstick.frames = Paths.getSparrowAtlas('fnmbg/dipstick');
+					dipstick.animation.addByPrefix('bop', 'dipstick idle', 24, false);
+					dipstick.setGraphicSize(Std.int(dipstick.width * 5.3));
+					dipstick.updateHitbox();
+			 		add(dipstick);
+
+					nylu = new FlxSprite(-260, 340);
+				    nylu.frames = Paths.getSparrowAtlas('fnmbg/nylu');
+			 		nylu.animation.addByPrefix('bop', 'nylu idle', 24, false);
+			 		nylu.setGraphicSize(Std.int(nylu.width * 5.3));
+			 		nylu.updateHitbox();
+			 		add(nylu);
 
 					fnmbg.updateHitbox();
 			}
@@ -3714,9 +3730,9 @@ class PlayState extends MusicBeatState
                             defaultCamZoom = 0.7;
 
 						case 'sheeb':
-                            camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
+                            camFollow.y = dad.getMidpoint().y - 170 + dadnoteMovementYoffset;
                             camFollow.x = dad.getMidpoint().x - -300 + dadnoteMovementXoffset;
-                            defaultCamZoom = 0.7;
+                            defaultCamZoom = 0.65;
 
 						case 'jesse':
 							camFollow.y = dad.getMidpoint().y - 100 + dadnoteMovementYoffset;
@@ -3805,9 +3821,9 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 350 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.7;
 					case 'fnmbg':
-						camFollow.x = boyfriend.getMidpoint().x - 280 + bfnoteMovementXoffset;
-						camFollow.y = boyfriend.getMidpoint().y - 350 + bfnoteMovementYoffset;
-						defaultCamZoom = 0.8;
+						camFollow.x = boyfriend.getMidpoint().x - 350 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 420 + bfnoteMovementYoffset;
+						defaultCamZoom = 0.75;
 					case 'mcsm':
 						camFollow.x = boyfriend.getMidpoint().x - 75 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 150 + bfnoteMovementYoffset;
@@ -6041,6 +6057,11 @@ class PlayState extends MusicBeatState
 					stev.animation.play('bop', false);
 					notchStanding.animation.play('bop', false);
 					hors.animation.play('bop', false);
+				}
+			case 'fnmbg':
+				if(FlxG.save.data.distractions){
+					dipstick.animation.play('bop', false);
+					nylu.animation.play('bop', false);
 				}
 			case 'templeentrance':
 				if(FlxG.save.data.distractions){

@@ -674,7 +674,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 5.8));
+				setGraphicSize(Std.int(width * 5.6));
 				updateHitbox();
 
 				antialiasing = false;
