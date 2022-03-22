@@ -5758,18 +5758,25 @@ class PlayState extends MusicBeatState
 			{
 				switch (curStep)
 				{
+						
 	
 					case 64:
 						new FlxTimer().start(0.001, function(tmr:FlxTimer)
+						{
+							dad.alpha += 0.01;
+				
+							if (dad.alpha < 1)
 							{
-								dad.alpha += 0.01;
+								tmr.reset(0.001);
+							}
+						});
+						FlxTween.tween(FlxG.camera, {zoom: 1.5}, 4, {ease: FlxEase.quadOut});
+
+					case 96:
+						FlxTween.tween(FlxG.camera, {zoom: 0.8}, 6, {ease: FlxEase.quadOut});
 					
-								if (dad.alpha < 1)
-								{
-									tmr.reset(0.001);
-								}
-							});
-					}			
+
+				}			
 			}
 	
 		if (SONG.song.toLowerCase() == 'iron picks') 
@@ -5792,6 +5799,7 @@ class PlayState extends MusicBeatState
 				case 64 | 68 | 72 | 76 | 80 | 84 | 88 | 92 | 96 | 100 | 104 | 108 | 112 | 116 | 120:
 					dad.playAnim('idle-alt', true);
 					trace('playing alt anim');
+					FlxG.camera.zoom += 0.015;
 			}
 		}
 
