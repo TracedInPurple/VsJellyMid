@@ -3740,8 +3740,8 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.7;
 
 						case 'notch':
-							camFollow.y = dad.getMidpoint().y - 120 + dadnoteMovementYoffset;
-							camFollow.x = dad.getMidpoint().x - -125 + dadnoteMovementXoffset;
+							camFollow.y = dad.getMidpoint().y - 200 + dadnoteMovementYoffset;
+							camFollow.x = dad.getMidpoint().x - -40 + dadnoteMovementXoffset;
 							defaultCamZoom = 0.7;
 
 						case 'steve-armor':
@@ -3823,7 +3823,7 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 240;
 						defaultCamZoom = 0.8;
 					case 'notch':
-						camFollow.x = boyfriend.getMidpoint().x - 320 + bfnoteMovementXoffset;
+						camFollow.x = boyfriend.getMidpoint().x - 280 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - 200 + bfnoteMovementYoffset;
 						defaultCamZoom = 0.9;
 					case 'entity':
@@ -5778,6 +5778,23 @@ class PlayState extends MusicBeatState
 
 				}			
 			}
+
+			if(SONG.song.toLowerCase() == 'retired')
+				{
+					switch (curStep)
+					{
+						case 1:
+							FlxTween.tween(FlxG.camera, {zoom: 1.2}, 4.49, {ease: FlxEase.quadOut});
+						case 48:
+							FlxTween.tween(FlxG.camera, {zoom: 0.7}, 4.5, {ease: FlxEase.quadOut});
+						case 720:
+							FlxTween.tween(FlxG.camera, {zoom: 1.5}, 5.9, {ease: FlxEase.quadOut});
+						case 768:
+							FlxTween.tween(FlxG.camera, {zoom: 0.7}, 1.5, {ease: FlxEase.quadOut});
+						
+	
+					}			
+				}
 	
 		if (SONG.song.toLowerCase() == 'iron picks') 
 		{
