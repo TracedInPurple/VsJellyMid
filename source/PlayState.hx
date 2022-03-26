@@ -3871,8 +3871,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 350;
 						defaultCamZoom = 1.2;
 					case 'awwman':
-						camFollow.x = boyfriend.getMidpoint().x - 265;
-						camFollow.y = boyfriend.getMidpoint().y - 340;
+						camFollow.x = boyfriend.getMidpoint().x - 265 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 340 + bfnoteMovementYoffset;
 						defaultCamZoom = 1.4;
 				}
 			}
@@ -5717,39 +5717,46 @@ class PlayState extends MusicBeatState
 			switch (curStep)
 			{
 				case 566:
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-						{
-							dad.alpha += 0.01;
-				
-							if (dad.alpha < 1)
-							{
-								tmr.reset(0.001);
-							}
-						});
+					//new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					//	{
+					//		dad.alpha += 0.01;
+				//
+					//		if (dad.alpha < 1)
+					//		{
+					//			tmr.reset(0.001);
+					//		}
+					//	});
 					//evilTrail.visible = true;
+					FlxTween.tween(dad, {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
 
 
 				case 686 | 1008 | 1086 | 1102 | 1116 | 1214 | 1232 | 1248 | 1342 | 1358 | 1374 | 1406 | 1422 | 1438 | 1470 | 1486 | 1502 | 1550 | 1566 | 1790 | 2046:
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-					{
-						vignette.alpha += 0.015;
-						FlxG.camera.zoom += 0.035;
-						if (vignette.alpha < 1)
-						{
-							tmr.reset(0.001);
-						}
-					});
+					//new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					//{
+					//	vignette.alpha += 0.015;
+					//	FlxG.camera.zoom += 0.035;
+					//	if (vignette.alpha < 1)
+					//	{
+					//		tmr.reset(0.001);
+					//	}
+					//});
+					FlxTween.tween(vignette, {alpha: 1}, 0.4, {ease: FlxEase.quadOut});
+					FlxTween.tween(FlxG.camera, {zoom: 1.76}, 0.5, {ease: FlxEase.quadOut});
+
+
 
 				case 694 | 1016 | 1094 | 1112 | 1126 | 1226 | 1242 | 1260 | 1354 | 1370 | 1386 | 1418 | 1434 | 1450 | 1482 | 1498 | 1514 | 1562 | 1578 | 1802 | 2058:
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-					{
-						vignette.alpha -= 0.0225;
-						//FlxG.camera.zoom -= 0.025;
-						if (vignette.alpha != 0)
-						{
-							tmr.reset(0.001);
-						}
-					});
+					//new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					//{
+					//	vignette.alpha -= 0.0225;
+					//	//FlxG.camera.zoom -= 0.025;
+					//	if (vignette.alpha != 0)
+					//	{
+					//		tmr.reset(0.001);
+					//	}
+					//});
+					FlxTween.tween(vignette, {alpha: 0}, 0.2, {ease: FlxEase.quadOut});
+
 
 				}			
 		}
@@ -5859,8 +5866,12 @@ class PlayState extends MusicBeatState
 					remove(blackStuff);
 					whiteFade();
 					stevePrepare();
+					FlxTween.tween(FlxG.camera, {zoom: 1.7}, 0.4, {ease: FlxEase.quadOut});
+
 				case 384 | 400 | 416 | 432 | 448 | 464 | 480 | 496 | 768 | 784 | 832 /*846*/ | 848 | 864 | 866 | 880 | 1166:
 					slashEvent();
+					FlxTween.tween(FlxG.camera, {zoom: 1.7}, 0.4, {ease: FlxEase.quadOut});
+
 					stevePrepare();
 				case 388 | 404 | 420 | 436 | 452 | 468 | 484 | 500 | 772 | 788 | 836 /*850 */ | 852 | 868 | 870 | 884 | 1172:
 					steveAttack();
@@ -5871,6 +5882,7 @@ class PlayState extends MusicBeatState
 						}
 				case  800 | 802 | 816 | 818:
 					slashEvent();
+					FlxTween.tween(FlxG.camera, {zoom: 1.7}, 0.4, {ease: FlxEase.quadOut});
 					stevePrepare();
 				case 804 | 806 | 820 | 822:
 					steveAttack();
@@ -5888,8 +5900,9 @@ class PlayState extends MusicBeatState
 				switch (curStep)
 				{
 					case 395 | 427 | 459 | 492 | 652 | 716 | 844 | 908 | 940 | 972 | 1004 | 1164 | 1228:
+						FlxTween.tween(FlxG.camera, {zoom: 1.7}, 0.3, {ease: FlxEase.quadOut});
 						bonkEvent();
-					case 394 | 426 | 458 | 491 | 651 | 715 | 843 | 907 | 939 | 971 | 1003 | 1163 | 1227:
+					case 394 | 426 | 458 | 491 | 651 | 715 | 843 | 907 | 939 | 971 | 1003 | 1162 | 1227:
 						bonkAnim();
 				}
 	
