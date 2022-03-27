@@ -246,27 +246,35 @@ class Character extends FlxSprite
 				flipX = true;
 			
 
-			case 'bf-jelly':
+			case 'jelly':
 				iconColor = 'FF582B68';
 				frames = Paths.getSparrowAtlas('characters/jellybean');
 				animation.addByPrefix('idle', 'skeleton idle normal', 24, false);
-				animation.addByPrefix('singUP', 'steveHorse up', 24, false);
-				animation.addByPrefix('singLEFT', 'skeleton left normal', 24, false);
-				animation.addByPrefix('singRIGHT', 'steveHorse right', 24, false);
-				animation.addByPrefix('singDOWN', 'steveHorse down', 24, false);
+				animation.addByPrefix('singUP', 'jellybean up note', 24, false);
+				animation.addByPrefix('singLEFT', 'jellybean left note', 24, false);
+				animation.addByPrefix('singRIGHT', 'jellybean right note', 24, false);
+				animation.addByPrefix('singDOWN', 'jellybean down note', 24, false);
+				animation.addByPrefix('singUPmiss', 'jellybean up miss', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'jellybean left miss', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'jellybean right miss', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'jellybean down miss', 24, false);
 
-				addOffset('idle', -250, -260);
-				addOffset("singUP", -247, -256);
-				addOffset("singRIGHT", -249, -254);
-				addOffset("singLEFT", -244, -259);
-				addOffset("singDOWN", -256, -260);
+				addOffset('idle');
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+				addOffset("singUPmiss");
+				addOffset("singRIGHTmiss");
+				addOffset("singLEFTmiss");
+				addOffset("singDOWNmiss");
 
 				playAnim('idle');
 
 				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
-				antialiasing = false;
+				antialiasing = true;
 				
 			case 'skeleton':
 				iconColor = 'FFA26060';
@@ -292,17 +300,17 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
-				antialiasing = false;
+				antialiasing = true;
 
 				case 'skeletonGuitar':
 					iconColor = 'FFA26060';
 					frames = Paths.getSparrowAtlas('characters/skeleton');
 					animation.addByPrefix('idle', 'skeleton idle guitar', 24, false);
-					animation.addByPrefix('singUP', 'skeleton up normal', 24, false);
-					animation.addByPrefix('singLEFT', 'skeleton left normal', 24, false);
-					animation.addByPrefix('singRIGHT', 'skeleton right normal', 24, false);
-					animation.addByPrefix('singDOWN', 'skeleton down normal', 24, false);
-					animation.addByPrefix('watchThis', 'skeleton watch thisl', 24, false);
+					animation.addByPrefix('singUP', 'skeleton up guitar', 24, false);
+					animation.addByPrefix('singLEFT', 'skeleton left guitar', 24, false);
+					animation.addByPrefix('singRIGHT', 'skeleton right guitar', 24, false);
+					animation.addByPrefix('singDOWN', 'skeleton down guitar', 24, false);
+
 	
 	
 					addOffset('idle', -250, -260);
@@ -318,7 +326,7 @@ class Character extends FlxSprite
 					setGraphicSize(Std.int(width * 0.8));
 					updateHitbox();
 	
-					antialiasing = false;
+					antialiasing = true;
 
 			case 'bfminecraft-death': // tragically and sadly:((
 				frames = Paths.getSparrowAtlas('death/bfMinecraftDies.png', 'shared');
