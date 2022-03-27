@@ -244,63 +244,59 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 				flipX = true;
-			
 
-			case 'jelly':
-				iconColor = 'FF582B68';
-				frames = Paths.getSparrowAtlas('characters/jellybean');
-				animation.addByPrefix('idle', 'skeleton idle normal', 24, false);
-				animation.addByPrefix('singUP', 'jellybean up note', 24, false);
-				animation.addByPrefix('singLEFT', 'jellybean left note', 24, false);
-				animation.addByPrefix('singRIGHT', 'jellybean right note', 24, false);
-				animation.addByPrefix('singDOWN', 'jellybean down note', 24, false);
-				animation.addByPrefix('singUPmiss', 'jellybean up miss', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'jellybean left miss', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'jellybean right miss', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'jellybean down miss', 24, false);
-
-				addOffset('idle');
-				addOffset("singUP");
-				addOffset("singRIGHT");
-				addOffset("singLEFT");
-				addOffset("singDOWN");
-				addOffset("singUPmiss");
-				addOffset("singRIGHTmiss");
-				addOffset("singLEFTmiss");
-				addOffset("singDOWNmiss");
-
-				playAnim('idle');
-
-				setGraphicSize(Std.int(width * 0.8));
-				updateHitbox();
-
-				antialiasing = true;
 				
-			case 'skeleton':
-				iconColor = 'FFA26060';
-				frames = Paths.getSparrowAtlas('characters/skeleton');
-				animation.addByPrefix('idle', 'skeleton idle normal', 24, false);
-				animation.addByPrefix('singUP', 'skeleton up normal', 24, false);
-				animation.addByPrefix('singLEFT', 'skeleton left normal', 24, false);
-				animation.addByPrefix('singRIGHT', 'skeleton right normal', 24, false);
-				animation.addByPrefix('singDOWN', 'skeleton down normal', 24, false);
-				animation.addByPrefix('watchThis', 'skeleton watch thisl', 24, false);
 
+				case 'jellybean':
+					iconColor = 'FF582B68';
+					frames = Paths.getSparrowAtlas('characters/jellybean');
+					animation.addByPrefix('idle', 'jellybean idle note', 24, false);
+					animation.addByPrefix('singUP', 'jellybean up note', 24, false);
+					animation.addByPrefix('singLEFT', 'jellybean left note', 24, false);
+					animation.addByPrefix('singRIGHT', 'jellybean right note', 24, false);
+					animation.addByPrefix('singDOWN', 'jellybean down note', 24, false);
+	
+	
+					addOffset('idle', -250, -260);
+					addOffset("singUP", -254, -268);
+					addOffset("singRIGHT", -252, -257);
+					addOffset("singLEFT", -306, -270);
+					addOffset("singDOWN", -244, -260);
+					addOffset("watchThis", -249, -260);
+	
+	
+					playAnim('idle');
+	
+					setGraphicSize(Std.int(width * 0.8));
+					updateHitbox();
+	
+					antialiasing = true;
 
-				addOffset('idle', -250, -260);
-				addOffset("singUP", -274, -242);
-				addOffset("singRIGHT", -292, -277);
-				addOffset("singLEFT", -256, -260);
-				addOffset("singDOWN", -244, -260);
-				addOffset("watchThis", -244, -260);
-
-
-				playAnim('idle');
-
-				setGraphicSize(Std.int(width * 0.8));
-				updateHitbox();
-
-				antialiasing = true;
+				case 'skeleton':
+					iconColor = 'FFA26060';
+					frames = Paths.getSparrowAtlas('characters/skeleton');
+					animation.addByPrefix('idle', 'skeleton idle normal', 24, false);
+					animation.addByPrefix('singUP', 'skeleton up normal', 24, false);
+					animation.addByPrefix('singLEFT', 'skeleton left normal', 24, false);
+					animation.addByPrefix('singRIGHT', 'skeleton right normal', 24, false);
+					animation.addByPrefix('singDOWN', 'skeleton down normal', 24, false);
+					animation.addByPrefix('watchThis', 'skeleton watch this', 24, false);
+	
+	
+					addOffset('idle', -250, -260);
+					addOffset("singUP", -254, -268);
+					addOffset("singRIGHT", -252, -257);
+					addOffset("singLEFT", -306, -270);
+					addOffset("singDOWN", -244, -260);
+					addOffset("watchThis", -249, -260);
+	
+	
+					playAnim('idle');
+	
+					setGraphicSize(Std.int(width * 0.8));
+					updateHitbox();
+	
+					antialiasing = true;
 
 				case 'skeletonGuitar':
 					iconColor = 'FFA26060';
@@ -317,8 +313,8 @@ class Character extends FlxSprite
 					addOffset("singUP", -274, -242);
 					addOffset("singRIGHT", -292, -277);
 					addOffset("singLEFT", -256, -260);
-					addOffset("singDOWN", -244, -260);
-					addOffset("watchThis", -244, -260);
+					addOffset("singDOWN");
+					addOffset("watchThis");
 	
 	
 					playAnim('idle');

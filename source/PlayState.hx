@@ -173,7 +173,7 @@ class PlayState extends MusicBeatState
 
 	var songName:FlxText;
 
-	var doggo:FlxSprite; 
+	var skeletons:FlxSprite; 
 	var alexPickaxeBG:FlxSprite; 
 	var catto:FlxSprite; 
 	var sheep:FlxSprite; 
@@ -261,15 +261,6 @@ class PlayState extends MusicBeatState
 	public function removeObject(object:FlxBasic) { remove(object); }
 
 	//Fast Travel shit
-	private var floatvalue:Float = 0;
-	private var runvalue:Float = 0;
-	
-	private var fasttravelbg:FlxSprite;
-	private var fasttravelbgClone:FlxSprite;
-	private var bigmountian:FlxSprite;
-	private var smallmountian:FlxSprite;
-	private var smallmountian2:FlxSprite;
-	private var houseFT:FlxSprite;
 	var scroll:Bool = false;
 	var tween:FlxTween;
 
@@ -521,9 +512,11 @@ class PlayState extends MusicBeatState
 				curStage = 'jelly';
 
 				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('jelly/jellyben'));
-				bg.antialiasing = true;
+				bg.setGraphicSize(Std.int(bg.width * 1.9));
+				bg.antialiasing = false;
 				bg.scrollFactor.set(1, 1);
 				add(bg);
+
 			}
 			
 			default:
@@ -596,9 +589,14 @@ class PlayState extends MusicBeatState
 				dad.y += 360;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'skeleton':
-				dad.x -= 0;
+				dad.x -= 400;
 				dad.y -= 300;
-				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+				camPos.set(dad.getGraphicMidpoint().x + 0, dad.getGraphicMidpoint().y);
+
+			case 'jellybean':
+			dad.x -= 400;
+			dad.y -= 300;
+			camPos.set(dad.getGraphicMidpoint().x + 0, dad.getGraphicMidpoint().y);
 		}
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
@@ -634,8 +632,8 @@ class PlayState extends MusicBeatState
 				gf.y += 300;
 
 			case 'jelly':
-				boyfriend.x += 0;
-				boyfriend.y += 0;
+				boyfriend.x -= 200;
+				boyfriend.y -= 10;
 				gf.x += 240;
 				gf.y += 400;
 		}
@@ -648,6 +646,15 @@ class PlayState extends MusicBeatState
 		}
 
 		add(dad);
+		if(curStage == 'jelly')
+			{
+				skeletons = new FlxSprite(0, 0);
+				skeletons.frames = Paths.getSparrowAtlas('jelly/bgskeletons');
+			 	skeletons.animation.addByPrefix('bop', 'bgskeletons idle', 24, false);
+				skeletons.screenCenter(X);
+			 	skeletons.updateHitbox();
+			 	add(skeletons);
+			}
 
 
 		add(boyfriend);
@@ -1727,8 +1734,6 @@ class PlayState extends MusicBeatState
 			cpuStrums.forEach(function(spr:FlxSprite)
 			{					
 				spr.centerOffsets(); //CPU arrows start out slightly off-center
-				spr.offset.x -= 13;
-				spr.offset.y -= 13;
 			});
 
 			strumLineNotes.add(babyArrow);
@@ -1818,8 +1823,6 @@ class PlayState extends MusicBeatState
 		#if !debug
 		perfectMode = false;
 		#end
-		
-
 	
 		//	dad.dance();
 		//	boyfriend.playAnim('idle');
@@ -2108,12 +2111,11 @@ class PlayState extends MusicBeatState
 
 				switch (dad.curCharacter)
 				{
-						case 'skeleton':
-							camFollow.y = dad.getMidpoint().y - 175;
-							camFollow.x = dad.getMidpoint().x - -250;
-							defaultCamZoom = 1;
+					case 'skeleton':
+						camFollow.y = dad.getMidpoint().y + 160;
+						camFollow.x = dad.getMidpoint().x + 380;
+						defaultCamZoom = 1.2;
 				}
-
 			}
 
 			if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && camFollow.x != boyfriend.getMidpoint().x - 100)
@@ -2137,9 +2139,9 @@ class PlayState extends MusicBeatState
 				switch (curStage)
 				{
 					case 'jelly':
-						camFollow.x = boyfriend.getMidpoint().x - 200;
-						camFollow.y = boyfriend.getMidpoint().y - 210;
-						defaultCamZoom = 0.9;
+						camFollow.x = boyfriend.getMidpoint().x - 120;
+						camFollow.y = boyfriend.getMidpoint().y - 320;
+						defaultCamZoom = 1;
 				}
 			}
 		}
@@ -2381,6 +2383,7 @@ class PlayState extends MusicBeatState
 							if (Math.abs(daNote.noteData) == spr.ID)
 							{
 								spr.animation.play('confirm', true);
+
 							}
 							spr.centerOffsets();
 						});
@@ -3215,8 +3218,6 @@ class PlayState extends MusicBeatState
 					//dumbass pixel shit offset
 					//fucking bullshit but works LOL
 					spr.centerOffsets();
-					spr.offset.x -= 13;
-					spr.offset.y -= 13;
 
 				});
 			}
@@ -3438,6 +3439,7 @@ class PlayState extends MusicBeatState
 						if (Math.abs(note.noteData) == spr.ID)
 						{
 							spr.animation.play('confirm', true);
+					
 						}
 					});
 
@@ -3652,7 +3654,7 @@ class PlayState extends MusicBeatState
 		{
 			case 'jelly':
 				if(FlxG.save.data.distractions){
-					//skeletons.animation.play('bop', false);
+					skeletons.animation.play('bop', false);
 				}
 		}
 	}

@@ -1,2 +1,2 @@
-Atrocity:bf-jelly:1
+Atrocity:jellybean:1
 Jellymid:bf:1

@@ -3,5 +3,5 @@ bf-pixel
 bfminecraft
 gf-pixel
 gf-christmas
-jelly
+jellybean
 skeleton

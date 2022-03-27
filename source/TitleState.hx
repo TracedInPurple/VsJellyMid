@@ -179,8 +179,8 @@ class TitleState extends MusicBeatState
 		logoBl = new FlxSprite(110, 0).loadGraphic(Paths.image('jellymid'));
 		logoBl.antialiasing = true;
 		logoBl.updateHitbox();
-		logoBl.y += 150;
-		logoBl.x += 200;
+		logoBl.scale.set(0.6, 0.6);
+		logoBl.screenCenter();
 		FlxTween.tween(logoBl, {y: logoBl.y + 30}, 1, {ease: FlxEase.expoInOut, type: PINGPONG});
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;

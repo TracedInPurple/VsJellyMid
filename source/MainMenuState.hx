@@ -102,6 +102,7 @@ class MainMenuState extends MusicBeatState
 
 		var minecraft:FlxSprite = new FlxSprite().loadGraphic(Paths.image("jellymid"));
         minecraft.antialiasing = false;
+		minecraft.scale.set(0.6, 0.6);
 		minecraft.screenCenter();
 		minecraft.y -= 225;
         minecraft.updateHitbox();
@@ -294,7 +295,7 @@ class MainMenuState extends MusicBeatState
 		switch (daChoice)
 		{
 			case 'freeplay':
-				FlxG.switchState(new DifficultyInfo());
+				FlxG.switchState(new FreeplayState());
 				trace("Freeplay Menu Selected");
 
 			case 'ouh':
