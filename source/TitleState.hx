@@ -157,7 +157,7 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
 
-		Conductor.changeBPM(102);
+		Conductor.changeBPM(72);
 		persistentUpdate = true;
 
         pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('titleBG'));
@@ -176,7 +176,7 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		//add(bg);
 
-		logoBl = new FlxSprite(110, 0).loadGraphic(Paths.image('jellymid'));
+		logoBl = new FlxSprite(110, -250).loadGraphic(Paths.image('jellymid'));
 		logoBl.antialiasing = true;
 		logoBl.updateHitbox();
 		logoBl.scale.set(0.6, 0.6);
