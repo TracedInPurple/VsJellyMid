@@ -250,20 +250,27 @@ class Character extends FlxSprite
 				case 'jellybean':
 					iconColor = 'FF582B68';
 					frames = Paths.getSparrowAtlas('characters/jellybean');
-					animation.addByPrefix('idle', 'jellybean idle note', 24, false);
+					animation.addByPrefix('idle', 'jellybean idle', 24, false);
 					animation.addByPrefix('singUP', 'jellybean up note', 24, false);
-					animation.addByPrefix('singLEFT', 'jellybean left note', 24, false);
-					animation.addByPrefix('singRIGHT', 'jellybean right note', 24, false);
+					animation.addByPrefix('singRIGHT', 'jellybean left note', 24, false);
+					animation.addByPrefix('singLEFT', 'jellybean right note', 24, false);
 					animation.addByPrefix('singDOWN', 'jellybean down note', 24, false);
+					animation.addByPrefix('singUPmiss', 'jellybean up miss', 24, false);
+					animation.addByPrefix('singRIGHTmiss', 'jellybean left miss', 24, false);
+					animation.addByPrefix('singLEFTmiss', 'jellybean right miss', 24, false);
+					animation.addByPrefix('singDOWNmiss', 'jellybean down miss', 24, false);
+					animation.addByPrefix('deathScreen', 'jellybean death screen', 24, false);
 	
-	
-					addOffset('idle', -250, -260);
-					addOffset("singUP", -254, -268);
-					addOffset("singRIGHT", -252, -257);
-					addOffset("singLEFT", -306, -270);
-					addOffset("singDOWN", -244, -260);
-					addOffset("watchThis", -249, -260);
-	
+					addOffset('idle');
+					addOffset("singUP");
+					addOffset("singRIGHT");
+					addOffset("singLEFT");
+					addOffset("singDOWN");
+					addOffset("singUPmiss");
+					addOffset("singRIGHTmiss");
+					addOffset("singLEFTmiss");
+					addOffset("singDOWNmiss");
+					addOffset("deathScreen");
 	
 					playAnim('idle');
 	
@@ -271,6 +278,8 @@ class Character extends FlxSprite
 					updateHitbox();
 	
 					antialiasing = true;
+
+					flipX = true;
 
 				case 'skeleton':
 					iconColor = 'FFA26060';
@@ -293,7 +302,7 @@ class Character extends FlxSprite
 	
 					playAnim('idle');
 	
-					setGraphicSize(Std.int(width * 0.8));
+					setGraphicSize(Std.int(width * 0.9));
 					updateHitbox();
 	
 					antialiasing = true;

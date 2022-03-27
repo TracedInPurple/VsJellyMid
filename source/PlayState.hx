@@ -508,7 +508,7 @@ class PlayState extends MusicBeatState
 			}
 			case 'jelly':
 			{
-				defaultCamZoom = 1;
+				defaultCamZoom = 1.2;
 				curStage = 'jelly';
 
 				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('jelly/jellyben'));
@@ -569,6 +569,16 @@ class PlayState extends MusicBeatState
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
 
+		if(curStage == 'jelly')
+			{
+				skeletons = new FlxSprite(0, 0);
+				skeletons.frames = Paths.getSparrowAtlas('jelly/bgskeletons');
+			 	skeletons.animation.addByPrefix('bop', 'bgskeletons idle', 24, false);
+				skeletons.screenCenter(X);
+			 	skeletons.updateHitbox();
+			 	add(skeletons);
+			}
+
 		switch (SONG.player2)
 		{
 			case 'gf':
@@ -589,17 +599,14 @@ class PlayState extends MusicBeatState
 				dad.y += 360;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'skeleton':
-				dad.x -= 400;
-				dad.y -= 300;
+				dad.x -= 340;
+				dad.y -= 335;
 				camPos.set(dad.getGraphicMidpoint().x + 0, dad.getGraphicMidpoint().y);
-
-			case 'jellybean':
-			dad.x -= 400;
-			dad.y -= 300;
-			camPos.set(dad.getGraphicMidpoint().x + 0, dad.getGraphicMidpoint().y);
 		}
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
+
+		add(dad);
 
 		// REPOSITIONING PER STAGE
 		switch (curStage)
@@ -632,8 +639,8 @@ class PlayState extends MusicBeatState
 				gf.y += 300;
 
 			case 'jelly':
-				boyfriend.x -= 200;
-				boyfriend.y -= 10;
+				boyfriend.x -= 750;
+				boyfriend.y -= 390;
 				gf.x += 240;
 				gf.y += 400;
 		}
@@ -646,16 +653,6 @@ class PlayState extends MusicBeatState
 		}
 
 		add(dad);
-		if(curStage == 'jelly')
-			{
-				skeletons = new FlxSprite(0, 0);
-				skeletons.frames = Paths.getSparrowAtlas('jelly/bgskeletons');
-			 	skeletons.animation.addByPrefix('bop', 'bgskeletons idle', 24, false);
-				skeletons.screenCenter(X);
-			 	skeletons.updateHitbox();
-			 	add(skeletons);
-			}
-
 
 		add(boyfriend);
 			
@@ -2112,9 +2109,9 @@ class PlayState extends MusicBeatState
 				switch (dad.curCharacter)
 				{
 					case 'skeleton':
-						camFollow.y = dad.getMidpoint().y + 160;
-						camFollow.x = dad.getMidpoint().x + 380;
-						defaultCamZoom = 1.2;
+						camFollow.y = dad.getMidpoint().y + 180;
+						camFollow.x = dad.getMidpoint().x + 300;
+						defaultCamZoom = 1.05;
 				}
 			}
 
@@ -2136,12 +2133,12 @@ class PlayState extends MusicBeatState
 					luaModchart.executeState('playerOneTurn', []);
 				#end
 
-				switch (curStage)
+				switch (curStage) 
 				{
 					case 'jelly':
-						camFollow.x = boyfriend.getMidpoint().x - 120;
-						camFollow.y = boyfriend.getMidpoint().y - 320;
-						defaultCamZoom = 1;
+						camFollow.x = boyfriend.getMidpoint().x - -140;
+						camFollow.y = boyfriend.getMidpoint().y - -50;
+						defaultCamZoom = 1.2;
 				}
 			}
 		}
