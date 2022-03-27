@@ -23,7 +23,7 @@ class Credits extends MusicBeatState
 	private var iconArray:Array<AttachedSprite> = [];
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
-		['VS STEVE TEaM', 'steve'],
+		['VS JELLYMID TEaM', 'steve'],
 		['THEGaBODIaZ', 'gabo', 'Creator - Main artist & animator, Main Composer, Charter', 'https://youtube.com/thegabodiaz', 0xFF5EEBD8],
 		['TRaCEDINPURPLE', 'tiago', 'Co-Creator - Main Coder, Main Composer, Artist for Several Sprites, Menus', 'https://youtube.com/tracedinpurple', 0xFF41009C],
 		['NOSaDX', 'unknown', 'Dialogue Portraits Coder', 'https://vm.tiktok.com/ZMRvTGRsm/', 0xFF8FD8D4],

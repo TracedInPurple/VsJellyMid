@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="dipstick.png">
-<SubTexture name="dipstick idle0000" x="0" y="0" width="124" height="117" frameX="0" frameY="0" frameWidth="124" frameHeight="117" />
-<SubTexture name="dipstick idle0001" x="124" y="0" width="124" height="117" frameX="0" frameY="0" frameWidth="124" frameHeight="117" />
-<SubTexture name="dipstick idle0002" x="0" y="117" width="124" height="117" frameX="0" frameY="0" frameWidth="124" frameHeight="117" />
-<SubTexture name="dipstick idle0003" x="124" y="117" width="124" height="117" frameX="0" frameY="0" frameWidth="124" frameHeight="117" />
-<SubTexture name="dipstick idle0004" x="0" y="234" width="124" height="117" frameX="0" frameY="0" frameWidth="124" frameHeight="117" />
-<SubTexture name="dipstick idle0005" x="124" y="234" width="124" height="117" frameX="0" frameY="0" frameWidth="124" frameHeight="117" />
-</TextureAtlas>

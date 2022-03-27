@@ -21,22 +21,8 @@ class HealthIcon extends FlxSprite
 		animation.add('bfminecraft', [25, 27, 26, 32], 0, false, isPlayer);
 		animation.add('gf-pixel', [6, 8, 7], 0, false, isPlayer);
 		animation.add('gf-christmas', [6, 8, 7], 0, false, isPlayer);
-		animation.add('tuxsteveuoh', [9, 10, 11], 0, false, isPlayer);
-		animation.add('tuxsteve', [12, 10, 13], 0, false, isPlayer);
-		animation.add('steve-armor', [14, 10, 13], 0, false, isPlayer);
-		animation.add('tuxstevewhatever', [14, 10, 13], 0, false, isPlayer);
-		animation.add('stevehorse', [9, 10, 13], 0, false, isPlayer);
-		animation.add('alexnormal', [15, 17, 16], 0, false, isPlayer);	
-		animation.add('alexpickaxe', [18, 17, 19], 0, false, isPlayer);
-		animation.add('alexpickaxemad', [20, 17, 19], 0, false, isPlayer);
-		animation.add('alex', [20, 17, 19], 0, false, isPlayer);
-		animation.add('alexchill', [21, 17, 18], 0, false, isPlayer);
-		animation.add('notch', [22, 23, 24], 0, false, isPlayer);
-		animation.add('303', [31, 31, 31], 0, false, isPlayer);
-		animation.add('jaziel', [28, 28, 28], 0, false, isPlayer);
-		animation.add('bos', [29, 29, 29], 0, false, isPlayer);
-		animation.add('sheeb', [34, 34, 34], 0, false, isPlayer);
-		animation.add('irfan', [30, 30, 30], 0, false, isPlayer);
+		animation.add('bf-jelly', [9, 10, 11], 0, false, isPlayer);
+		animation.add('skeleton', [12, 12, 12], 0, false, isPlayer);
 		animation.play(char);
 
 		scrollFactor.set();

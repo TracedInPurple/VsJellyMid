@@ -99,22 +99,7 @@ class MainMenuState extends MusicBeatState
 		add(panoclone);
 		
 		startscroll = true;
-		
-		var minecraft:FlxSprite = new FlxSprite().loadGraphic(Paths.image("minecraf"));
-        minecraft.antialiasing = false;
-		minecraft.screenCenter();
-		minecraft.y -= 225;
-        minecraft.updateHitbox();
-		add(minecraft);
-
-		
-		tigoBabo = new FlxSprite().loadGraphic(Paths.image("Creators"));
-		tigoBabo.y += 750;
-		tigoBabo.x += 550;
-		tigoBabo.antialiasing = false;
-		tigoBabo.setGraphicSize(Std.int(tigoBabo.width * 0.4));
-		tigoBabo.updateHitbox();
-		add(tigoBabo);
+	
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		
@@ -135,8 +120,6 @@ class MainMenuState extends MusicBeatState
 			butos.scrollFactor.set();
 			switch(i) 
 			{
-				case 0: //storymode
-					butos.setPosition(butos.x, 275);
 				case 1: //freeplay
 					butos.setPosition(butos.x, 340);
 				case 2: // options
@@ -154,33 +137,7 @@ class MainMenuState extends MusicBeatState
 			}
 			menuItems.add(butos);
 		}
-
-		var storymenualert:FlxSprite = new FlxSprite().loadGraphic(Paths.image("story mode alert"));
-        storymenualert.antialiasing = false;
-		storymenualert.screenCenter();
-		storymenualert.y -= 135;
-		storymenualert.x += 350;
-        storymenualert.updateHitbox();
-		add(storymenualert);
-
 		add(menuItems);
-
-		dimBG = new FlxSprite().loadGraphic(Paths.image("blackBG"));
-        dimBG.antialiasing = false;
-		dimBG.screenCenter(X);
-        dimBG.updateHitbox();
-		dimBG.alpha = 0;
-		add(dimBG);
-
-		pressEnter = new FlxSprite(0, 0).loadGraphic(Paths.image("enter"));
-        pressEnter.antialiasing = false;
-		pressEnter.setGraphicSize(Std.int(pressEnter.width * 3));
-		pressEnter.screenCenter(X);
-		pressEnter.x -= 160;
-		pressEnter.screenCenter(Y);
-        pressEnter.updateHitbox();
-		pressEnter.alpha = 0;
-		add(pressEnter);
 
 		firstStart = false;
 
@@ -224,245 +181,6 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
-
-		if (FlxG.mouse.overlaps(tigoBabo))
-		{
-			if(FlxG.mouse.justPressed)
-			{
-				PlayState.SONG = Song.loadFromJson(Highscore.formatSong('dev battle', 1), 'dev battle');
-				PlayState.isStoryMode = false;
-				PlayState.storyDifficulty = 1;
-				LoadingState.loadAndSwitchState(new PlayState());
-			}
-		}
-
-		var enter:Bool = controls.ACCEPT;
-
-		if (FlxG.keys.justPressed.E)
-			if (pressCount == 0)
-			{
-				pressCount = 1;
-				new FlxTimer().start(0.001, function(tmr:FlxTimer)
-					{
-						dimBG.alpha += 0.01;
-			
-						if (dimBG.alpha < 0.15)
-						{
-							tmr.reset(0.001);
-						}
-	
-					});
-			}
-			else
-			{
-				pressCount == 0;
-				new FlxTimer().start(0.001, function(tmr:FlxTimer)
-					{
-						dimBG.alpha -= 0.03;
-			
-						if (dimBG.alpha > 1)
-						{
-							tmr.reset(0.001);
-						}
-	
-					});
-
-			}
-
-		if (FlxG.keys.justPressed.N)
-			if (pressCount == 1)
-			{
-				pressCount = 2;
-				new FlxTimer().start(0.001, function(tmr:FlxTimer)
-					{
-						dimBG.alpha += 0.01;
-			
-						if (dimBG.alpha < 0.3)
-						{
-							tmr.reset(0.001);
-						}
-	
-					});
-			}
-			else
-			{
-				pressCount == 0;
-				new FlxTimer().start(0.001, function(tmr:FlxTimer)
-					{
-						dimBG.alpha -= 0.03;
-			
-						if (dimBG.alpha > 1)
-						{
-							tmr.reset(0.001);
-						}
-	
-					});
-			}
-
-		if (FlxG.keys.justPressed.T)
-			if (pressCount == 2)
-				{
-					pressCount = 3;
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-						{
-							dimBG.alpha += 0.01;
-				
-							if (dimBG.alpha < 0.45)
-							{
-								tmr.reset(0.001);
-							}
-		
-						});
-				}
-			else
-				{
-					pressCount == 0;
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-						{
-							dimBG.alpha -= 0.03;
-				
-							if (dimBG.alpha > 1)
-							{
-								tmr.reset(0.001);
-							}
-		
-						});
-				}
-
-		if (FlxG.keys.justPressed.I)
-			if (pressCount == 3)
-				{
-					pressCount = 4;
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-						{
-							dimBG.alpha += 0.01;
-				
-							if (dimBG.alpha < 0.60)
-							{
-								tmr.reset(0.001);
-							}
-		
-						});
-				}
-			else
-				{
-					pressCount == 0;
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-						{
-							dimBG.alpha -= 0.03;
-				
-							if (dimBG.alpha > 1)
-							{
-								tmr.reset(0.001);
-							}
-		
-						});
-				}
-
-		if (FlxG.keys.justPressed.T)
-			if (pressCount == 4)
-				{
-					pressCount = 5;
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-						{
-							dimBG.alpha += 0.01;
-				
-							if (dimBG.alpha < 0.75)
-							{
-								tmr.reset(0.001);
-							}
-		
-						});
-				}
-			else
-				{
-					pressCount == 0;
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-						{
-							dimBG.alpha -= 0.03;
-				
-							if (dimBG.alpha > 1)
-							{
-								tmr.reset(0.001);
-							}
-		
-						});
-				}
-
-		if (FlxG.keys.justPressed.Y)
-			if (pressCount == 5)
-				{
-					pressCount = 6;
-					FlxG.sound.music.stop();
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-						{
-							dimBG.alpha += 0.01;
-				
-							if (dimBG.alpha < 1)
-							{
-								tmr.reset(0.001);
-							}
-		
-						});
-					new FlxTimer().start(0.001, function(tmrr:FlxTimer)
-						{
-							pressEnter.alpha += 0.01;
-				
-							if (pressEnter.alpha < 1)
-							{
-								tmrr.reset(0.001);
-							}
-			
-						});
-				}
-			else
-				{
-					pressCount == 0;
-					new FlxTimer().start(0.001, function(tmr:FlxTimer)
-						{
-							dimBG.alpha -= 0.03;
-				
-							if (dimBG.alpha > 1)
-							{
-								tmr.reset(0.001);
-							}
-		
-						});
-						
-				}
-				
-		if (enter && pressCount == 6)
-			{
-				//new FlxTimer().start(0.001, function(tmr:FlxTimer)
-				//{
-				//	pressEnter.alpha += 0.01;
-		//
-				//	if (pressEnter.alpha < 1)
-				//	{
-				//		tmr.reset(0.001);
-				//	}
-				//});
-				FlxG.camera.shake(0.05, 360);
-
-				if(enter)
-				{
-					PlayState.SONG = Song.loadFromJson('entity', 'entity');
-					PlayState.isStoryMode = false;
-					PlayState.storyDifficulty = 1;
-					PlayState.storyWeek = 4;
-					FlxG.camera.fade(FlxColor.RED, 0.5, false);
-
-					//PLAY SPECIAL SOUND
-					//FlxG.sound.play(Paths.sound('confirmMenu'));
-
-					new FlxTimer().start(1.5, function(tmr:FlxTimer)
-					{
-						LoadingState.loadAndSwitchState(new PlayState());
-					});
-				}
-
-			}
-
 
 		if (startscroll == true)
 			{
@@ -530,10 +248,6 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('ouh'));
 			FlxG.camera.shake(0.05, 0.05);
 		}
-		else if (optionShit[curSelected] == 'story mode')
-		{
-			goToState();
-		}
 		else
 		{
 			selectedSomethin = true;
@@ -572,10 +286,6 @@ class MainMenuState extends MusicBeatState
 
 		switch (daChoice)
 		{
-			case 'story mode':
-				//FlxG.switchState(new StoryMenuState());
-				FlxG.sound.play(Paths.sound('cancelMenu'));			
-				trace("Story Menu Selected");
 			case 'freeplay':
 				FlxG.switchState(new DifficultyInfo());
 				trace("Freeplay Menu Selected");
