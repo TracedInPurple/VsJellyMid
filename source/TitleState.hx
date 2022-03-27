@@ -176,11 +176,8 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		//add(bg);
 
-		logoBl = new FlxSprite(110, -0);
-		logoBl.frames = Paths.getSparrowAtlas('logoBumpinPreFinal');
+		panoclone = new FlxSprite(110, 0).loadGraphic(Paths.image('jellymid'));
 		logoBl.antialiasing = true;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
-		logoBl.animation.play('bump');
 		logoBl.updateHitbox();
 		logoBl.y += 150;
 		logoBl.x += 200;
@@ -207,10 +204,6 @@ class TitleState extends MusicBeatState
 		// titleText.screenCenter(X);
 		add(titleText);
 
-		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
-		logo.screenCenter();
-		logo.antialiasing = true;
-		// add(logo);
 
 		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
 		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});

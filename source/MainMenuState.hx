@@ -99,6 +99,13 @@ class MainMenuState extends MusicBeatState
 		add(panoclone);
 		
 		startscroll = true;
+
+		var minecraft:FlxSprite = new FlxSprite().loadGraphic(Paths.image("jellymid"));
+        minecraft.antialiasing = false;
+		minecraft.screenCenter();
+		minecraft.y -= 225;
+        minecraft.updateHitbox();
+		add(minecraft);
 	
 
 		menuItems = new FlxTypedGroup<FlxSprite>();

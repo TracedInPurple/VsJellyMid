@@ -1421,8 +1421,8 @@ class PlayState extends MusicBeatState
 			songStartText.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			switch (SONG.song.toLowerCase())
 			{
-				case 'astrocity':
-					songStartText.text = 'Now Playing: Astorcity - Saster | Cover by TheGaboDiaz';
+				case 'atrocity':
+					songStartText.text = 'Now Playing: Atorcity - Saster | Cover by TheGaboDiaz';
 
 				case 'jellymid':
 					songStartText.text = 'Now Playing: Jellymid - TheGaboDiaz';
@@ -2096,7 +2096,7 @@ class PlayState extends MusicBeatState
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
 
-		#if debug
+		
 		if (FlxG.keys.justPressed.EIGHT)
 		{
 			FlxG.switchState(new AnimationDebug(SONG.player2));
@@ -2121,7 +2121,7 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
-		#end
+		
 
 		if (startingSong)
 		{
