@@ -517,7 +517,7 @@ class PlayState extends MusicBeatState
 			}
 			case 'jelly':
 			{
-				defaultCamZoom = 0.9;
+				defaultCamZoom = 1;
 				curStage = 'jelly';
 
 				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback'));
