@@ -245,47 +245,13 @@ class Character extends FlxSprite
 
 				flipX = true;
 			
-			case 'bfeyes':
-				frames = Paths.getSparrowAtlas('characters/bfeyes');
-				animation.addByPrefix('idle', 'BF IDLE', 24, false);
-				animation.addByPrefix('singUP', 'BF UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'BF LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'BF DOWN NOTE', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF DOWN MISS', 24, false);
-
-				addOffset('idle');
-				addOffset("singUP");
-				addOffset("singRIGHT");
-				addOffset("singLEFT");
-				addOffset("singDOWN");
-				addOffset("singUPmiss");
-				addOffset("singRIGHTmiss");
-				addOffset("singLEFTmiss");
-				addOffset("singDOWNmiss");
-
-				setGraphicSize(Std.int(width * 6));
-				updateHitbox();
-
-				playAnim('idle');
-
-				width -= 100;
-				height -= 100;
-
-				antialiasing = false;
-
-				flipX = true;
-			
 
 			case 'bf-jelly':
 				iconColor = 'FF582B68';
-				frames = Paths.getSparrowAtlas('characters/steveHorse');
-				animation.addByPrefix('idle', 'steveHorse idle', 24, false);
+				frames = Paths.getSparrowAtlas('characters/jellybean');
+				animation.addByPrefix('idle', 'skeleton idle normal', 24, false);
 				animation.addByPrefix('singUP', 'steveHorse up', 24, false);
-				animation.addByPrefix('singLEFT', 'steveHorse left', 24, false);
+				animation.addByPrefix('singLEFT', 'skeleton left normal', 24, false);
 				animation.addByPrefix('singRIGHT', 'steveHorse right', 24, false);
 				animation.addByPrefix('singDOWN', 'steveHorse down', 24, false);
 
@@ -297,32 +263,62 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
 				antialiasing = false;
 				
 			case 'skeleton':
 				iconColor = 'FFA26060';
-				frames = Paths.getSparrowAtlas('characters/tuxsteveuoh');
-				animation.addByPrefix('idle', 'tuxsteveuoh idle', 24, false);
-				animation.addByPrefix('singUP', 'tuxsteveuoh up', 24, false);
-				animation.addByPrefix('singLEFT', 'tuxsteveuoh left', 24, false);
-				animation.addByPrefix('singRIGHT', 'tuxsteveuoh right', 24, false);
-				animation.addByPrefix('singDOWN', 'tuxsteveuoh down', 24, false);
+				frames = Paths.getSparrowAtlas('characters/skeleton');
+				animation.addByPrefix('idle', 'skeleton idle normal', 24, false);
+				animation.addByPrefix('singUP', 'skeleton up normal', 24, false);
+				animation.addByPrefix('singLEFT', 'skeleton left normal', 24, false);
+				animation.addByPrefix('singRIGHT', 'skeleton right normal', 24, false);
+				animation.addByPrefix('singDOWN', 'skeleton down normal', 24, false);
+				animation.addByPrefix('watchThis', 'skeleton watch thisl', 24, false);
+
 
 				addOffset('idle', -250, -260);
 				addOffset("singUP", -274, -242);
 				addOffset("singRIGHT", -292, -277);
 				addOffset("singLEFT", -256, -260);
 				addOffset("singDOWN", -244, -260);
+				addOffset("watchThis", -244, -260);
+
 
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 5.8));
+				setGraphicSize(Std.int(width * 0.8));
 				updateHitbox();
 
 				antialiasing = false;
+
+				case 'skeletonGuitar':
+					iconColor = 'FFA26060';
+					frames = Paths.getSparrowAtlas('characters/skeleton');
+					animation.addByPrefix('idle', 'skeleton idle guitar', 24, false);
+					animation.addByPrefix('singUP', 'skeleton up normal', 24, false);
+					animation.addByPrefix('singLEFT', 'skeleton left normal', 24, false);
+					animation.addByPrefix('singRIGHT', 'skeleton right normal', 24, false);
+					animation.addByPrefix('singDOWN', 'skeleton down normal', 24, false);
+					animation.addByPrefix('watchThis', 'skeleton watch thisl', 24, false);
+	
+	
+					addOffset('idle', -250, -260);
+					addOffset("singUP", -274, -242);
+					addOffset("singRIGHT", -292, -277);
+					addOffset("singLEFT", -256, -260);
+					addOffset("singDOWN", -244, -260);
+					addOffset("watchThis", -244, -260);
+	
+	
+					playAnim('idle');
+	
+					setGraphicSize(Std.int(width * 0.8));
+					updateHitbox();
+	
+					antialiasing = false;
 
 			case 'bfminecraft-death': // tragically and sadly:((
 				frames = Paths.getSparrowAtlas('death/bfMinecraftDies.png', 'shared');

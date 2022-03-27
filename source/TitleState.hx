@@ -176,7 +176,7 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		//add(bg);
 
-		panoclone = new FlxSprite(110, 0).loadGraphic(Paths.image('jellymid'));
+		logoBl = new FlxSprite(110, 0).loadGraphic(Paths.image('jellymid'));
 		logoBl.antialiasing = true;
 		logoBl.updateHitbox();
 		logoBl.y += 150;
@@ -413,10 +413,7 @@ class TitleState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
-
-		logoBl.animation.play('bump');
-		//danceLeft = !danceLeft;
-
+		//danceLeft = !danceLeft
 		//if (danceLeft)
 		//	gfDance.animation.play('danceRight');
 		//else
@@ -430,7 +427,6 @@ class TitleState extends MusicBeatState
 		{
 			case 1:
 				createCoolText(['TheGaboDiaz', 'TracedInPurple']);
-				addMoreText('and the Vs Steve Team');
 			// credTextShit.visible = true;
 			case 3:
 				addMoreText('present');
@@ -472,7 +468,7 @@ class TitleState extends MusicBeatState
 				addMoreText('Funkin');
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Vs Steve'); // credTextShit.text += '\nFunkin';
+				addMoreText('Vs Jellymid'); // credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();
