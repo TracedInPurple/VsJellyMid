@@ -307,7 +307,7 @@ class Character extends FlxSprite
 	
 					antialiasing = true;
 
-				case 'skeletonGuitar':
+				case 'skeletonguitar':
 					iconColor = 'FFA26060';
 					frames = Paths.getSparrowAtlas('characters/skeleton');
 					animation.addByPrefix('idle', 'skeleton idle guitar', 24, false);
@@ -319,16 +319,16 @@ class Character extends FlxSprite
 	
 	
 					addOffset('idle', -250, -260);
-					addOffset("singUP", -274, -242);
-					addOffset("singRIGHT", -292, -277);
-					addOffset("singLEFT", -256, -260);
-					addOffset("singDOWN");
+					addOffset("singUP", -254, -268);
+					addOffset("singRIGHT", -252, -257);
+					addOffset("singLEFT", -306, -270);
+					addOffset("singDOWN", -244, -260);
 					addOffset("watchThis");
 	
 	
 					playAnim('idle');
 	
-					setGraphicSize(Std.int(width * 0.8));
+					setGraphicSize(Std.int(width * 0.9));
 					updateHitbox();
 	
 					antialiasing = true;

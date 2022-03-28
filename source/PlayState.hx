@@ -602,6 +602,10 @@ class PlayState extends MusicBeatState
 				dad.x -= 340;
 				dad.y -= 335;
 				camPos.set(dad.getGraphicMidpoint().x + 0, dad.getGraphicMidpoint().y);
+			case 'skeletonguitar':
+				dad.x -= 340;
+				dad.y -= 335;
+				camPos.set(dad.getGraphicMidpoint().x + 0, dad.getGraphicMidpoint().y);
 		}
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
@@ -2112,6 +2116,10 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y + 180;
 						camFollow.x = dad.getMidpoint().x + 300;
 						defaultCamZoom = 1.05;
+					case 'skeletonguitar':
+						camFollow.y = dad.getMidpoint().y + 180;
+						camFollow.x = dad.getMidpoint().x + 300;
+						defaultCamZoom = 1.1;
 				}
 			}
 
@@ -3460,6 +3468,10 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
+		if (curStep == 1514 && curSong == 'atrocity')
+		{
+			dad.playAnim('watchThis', true);
+		}
 
 		if(SONG.song.toLowerCase() == 'espionage')
 			{

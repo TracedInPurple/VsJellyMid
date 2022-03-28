@@ -23,6 +23,7 @@ class HealthIcon extends FlxSprite
 		animation.add('gf-christmas', [6, 8, 7], 0, false, isPlayer);
 		animation.add('jellybean', [9, 10, 11], 0, false, isPlayer);
 		animation.add('skeleton', [12, 12, 12], 0, false, isPlayer);
+		animation.add('skeletonguitar', [12, 12, 12], 0, false, isPlayer);
 		animation.play(char);
 
 		scrollFactor.set();
