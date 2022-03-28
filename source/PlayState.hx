@@ -2113,12 +2113,12 @@ class PlayState extends MusicBeatState
 				switch (dad.curCharacter)
 				{
 					case 'skeleton':
-						camFollow.y = dad.getMidpoint().y + 180;
-						camFollow.x = dad.getMidpoint().x + 300;
+						camFollow.y = dad.getMidpoint().y + 180 + dadnoteMovementYoffset;
+						camFollow.x = dad.getMidpoint().x + 300 + dadnoteMovementXoffset;
 						defaultCamZoom = 1.05;
 					case 'skeletonguitar':
-						camFollow.y = dad.getMidpoint().y + 180;
-						camFollow.x = dad.getMidpoint().x + 300;
+						camFollow.y = dad.getMidpoint().y + 180 + dadnoteMovementYoffset;
+						camFollow.x = dad.getMidpoint().x + 300 + dadnoteMovementXoffset;
 						defaultCamZoom = 1.1;
 				}
 			}
@@ -2144,8 +2144,8 @@ class PlayState extends MusicBeatState
 				switch (curStage) 
 				{
 					case 'jelly':
-						camFollow.x = boyfriend.getMidpoint().x - -140;
-						camFollow.y = boyfriend.getMidpoint().y - -50;
+						camFollow.x = boyfriend.getMidpoint().x - -140 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - -50 + bfnoteMovementYoffset;
 						defaultCamZoom = 1.2;
 				}
 			}
@@ -2717,8 +2717,8 @@ class PlayState extends MusicBeatState
 				if(scoreTxTMovement != null) {
 					scoreTxTMovement.cancel();
 				}
-				scoreTxt.scale.x = 1.05;
-				scoreTxt.scale.y = 1.05;
+				scoreTxt.scale.x = 1.1;
+				scoreTxt.scale.y = 1.1;
 				scoreTxTMovement = FlxTween.tween(scoreTxt.scale, {x: 1, y: 1}, 0.25, {
 					onComplete: function(twn:FlxTween) {
 						scoreTxTMovement = null;
@@ -2835,7 +2835,7 @@ class PlayState extends MusicBeatState
 			rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 			rating.screenCenter();
 			rating.y -= 50;
-			rating.x = coolText.x - 125;
+			rating.x = coolText.x - 500;
 
 			if (FlxG.save.data.changedHit)
 			{
@@ -3420,7 +3420,7 @@ class PlayState extends MusicBeatState
 								bfnoteMovementYoffset = 0;
 								boyfriend.playAnim('singRIGHT', true);
 							case 1:
-								bfnoteMovementYoffset = 40;
+								bfnoteMovementYoffset = 20;
 								bfnoteMovementXoffset = 0;
 								boyfriend.playAnim('singDOWN', true);
 							case 0:
@@ -3468,9 +3468,24 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
-		if (curStep == 1514 && curSong == 'atrocity')
+		//f (curStep == 1514 && curSong == 'atrocity')
+		//
+		//	dad.playAnim('watchThis', true);
+		//
+		if(SONG.song.toLowerCase() == 'atrocity')
 		{
-			dad.playAnim('watchThis', true);
+			switch(curStep)
+			{
+				case 1514:
+					dad.playAnim('watchThis', true);
+				case 1535:
+					remove(dad);
+					dad = new Character(100, 100, 'skeletonguitar');
+					dad.x -= 340;
+					dad.y -= 335;
+					add(dad);
+				
+			}
 		}
 
 		if(SONG.song.toLowerCase() == 'espionage')

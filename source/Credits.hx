@@ -23,24 +23,12 @@ class Credits extends MusicBeatState
 	private var iconArray:Array<AttachedSprite> = [];
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
-		['VS JELLYMID TEaM', 'steve'],
-		['THEGaBODIaZ', 'gabo', 'Creator - Main artist & animator, Main Composer, Charter', 'https://youtube.com/thegabodiaz', 0xFF5EEBD8],
-		['TRaCEDINPURPLE', 'tiago', 'Co-Creator - Main Coder, Main Composer, Artist for Several Sprites, Menus', 'https://youtube.com/tracedinpurple', 0xFF41009C],
-		['NOSaDX', 'unknown', 'Dialogue Portraits Coder', 'https://vm.tiktok.com/ZMRvTGRsm/', 0xFF8FD8D4],
-		['SHIBECICLE', 'unknown', 'Old Menu Artist, Collaborator', '', 0xFFDA0837],
-    	['UNDERNITY', 'undernity', 'Extra Coder, Helper, Collaborator', 'https://twitter.com/UndernityMain', 0xFF7DE206],
-    	['VIDZ', 'vidz', 'Extra Coder, Helper', '', 0xFF337BAB],
-		['CHROMaSEN', 'chroma', 'Extra Coder, Helper', 'https://www.youtube.com/channel/UCgGk4oZt3We-ktkEOV9HY1Q', 0xFF52EB80],
-		['TaEYaI', 'tae', 'Helper, Coder', 'https://www.youtube.com/c/TaeYai/featured', 0xFF56F5B3],
-		['BOS', 'minecraftboss', 'Individual Map Builder', '', 0xFFF5AE00],
-    	['OUTMaNCE', 'mance', 'Cutscene Animator, MC Majin Sonic Animator', 'https://www.tiktok.com/@.mance', 0xFFDEDD4E],
-    	['TaNKa', 'unknown', 'Collaborator, Creator of "Dont Funk at Night"', 'https://www.youtube.com/tankakuka', 0xFF337BAB],
-    	['SOMF', 'unknown', 'Ultra-Hardcore Charter', 'https://www.youtube.com/channel/UCspbOv2BXbDANpJyjguce2Q', 0xFF9FE3DA],
-    	['DUFTEa', 'duftea', 'Ultra-Hardcore Charter', 'https://www.youtube.com/c/Duftea', 0xFFC90076],
+		['VS jELLYMID TEaM'],
+		['THEGaBODIaZ', 'gabo', 'Creator - Main artist & Animator, Composer of Jellymid, Cover Creator of Atrocity MC Version, Charter', 'https://youtube.com/thegabodiaz', 0xFF5EEBD8],
+		['TRaCEDINPURPLE', 'tiago', 'Co-Creator - Main Coder, Menus', 'https://youtube.com/tracedinpurple', 0xFF41009C],
     	[''],
-		['SPECIaL THANKS TO...'],
-		['IRFaN', 'irfan', 'Playtester, Supporter', 'https://m.youtube.com/channel/UCBvHhreB_EfLe2bdZpZEQIQ', 0xFFABDA65],
-		['jaZIEL', 'jaziel', 'Supporter', '', 0xFFE20606],
+		['ORIGINaL SONG BY'],
+		['SaSTER', 'saster', 'Creator of Atrocity | Provider of the FLP/MIDI files!', 'https://www.youtube.com/channel/UCC4CkqOAwulRil3BEK9L3Mg', 0xFF41009C],
     	[''],
     	['DISCORD', 'discord', 'Join the Official Vs Steve Community Server', 'https://discord.gg/aNTVTshnvA', 0xFF41009C]
 	];
@@ -87,7 +75,7 @@ class Credits extends MusicBeatState
             {				
                 var icon:AttachedSprite = new AttachedSprite('crediticons/' + creditsStuff[i][1]);
                 icon.xAdd = optionText.width + 10;
-				icon.yAdd = optionText.height - 5;
+				icon.yAdd = optionText.height - 20;
 			    icon.sprTracker = optionText;
 	
 				// using a FlxGroup is too much fuss!

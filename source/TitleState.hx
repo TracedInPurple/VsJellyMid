@@ -176,7 +176,7 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		//add(bg);
 
-		logoBl = new FlxSprite(110, -250).loadGraphic(Paths.image('jellymid'));
+		logoBl = new FlxSprite(110, -250).loadGraphic(Paths.image('jellymidbig'));
 		logoBl.antialiasing = true;
 		logoBl.updateHitbox();
 		logoBl.scale.set(0.6, 0.6);
@@ -333,11 +333,11 @@ class TitleState extends MusicBeatState
 						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
 						InfoState.needVer = returnedData[0];
 						InfoState.currChanges = returnedData[1];
-						FlxG.switchState(new InfoState());
+						FlxG.switchState(new MainMenuState());
 					}
 					else
 					{
-						FlxG.switchState(new InfoState());
+						FlxG.switchState(new MainMenuState());
 					}
 				}
 				

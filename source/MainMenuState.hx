@@ -38,7 +38,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options', 'quit', 'credits', 'ouh', 'bonus'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'options', 'quit', 'credits', 'ouh', 'vssteve'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -101,8 +101,7 @@ class MainMenuState extends MusicBeatState
 		startscroll = true;
 
 		var minecraft:FlxSprite = new FlxSprite().loadGraphic(Paths.image("jellymid"));
-        minecraft.antialiasing = false;
-		minecraft.scale.set(0.6, 0.6);
+        minecraft.antialiasing = true;
 		minecraft.screenCenter();
 		minecraft.y -= 225;
         minecraft.updateHitbox();
@@ -138,7 +137,7 @@ class MainMenuState extends MusicBeatState
 					butos.setPosition(butos.x - 250, 550);
 				case 5: //uoh?
 					butos.setPosition(butos.x + 250, 550);
-				case 6: //extras
+				case 6: //VS STEVE MOD
 				    butos.setPosition(butos.x, 405);
 				case 7: //uoh?
 					butos.setPosition(butos.x + 300, 550);
@@ -256,6 +255,10 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('ouh'));
 			FlxG.camera.shake(0.05, 0.05);
 		}
+		else if (optionShit[curSelected] == 'vssteve')
+			{
+				goToState();
+			}
 		else
 		{
 			selectedSomethin = true;
@@ -309,8 +312,8 @@ class MainMenuState extends MusicBeatState
 
 			case 'credits':
 				FlxG.switchState(new WarnCreditState());
-			case 'bonus':
-				FlxG.switchState(new ExtrasState());
+			case 'vssteve':
+				CoolUtil.browserLoad('https://gamebanana.com/mods/288404');
 				trace("extras");
 			
 		}
