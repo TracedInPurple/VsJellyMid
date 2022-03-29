@@ -304,7 +304,7 @@ class Character extends FlxSprite
 					animation.addByPrefix('singLEFT', 'skeleton left normal', 24, false);
 					animation.addByPrefix('singRIGHT', 'skeleton right normal', 24, false);
 					animation.addByPrefix('singDOWN', 'skeleton down normal', 24, false);
-					animation.addByPrefix('watchThis', 'skeleton watch this', 12, false);
+					animation.addByPrefix('watchThis', 'skeleton watch this', 24, false);
 	
 	
 					addOffset('idle', -250, -260);
