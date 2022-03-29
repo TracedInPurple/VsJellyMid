@@ -26,7 +26,7 @@ class Credits extends MusicBeatState
 		['VS jELLYMID TEaM'],
 		['THEGaBODIaZ', 'gabo', 'Creator - Main artist & Animator, Composer of Jellymid, Cover Creator of Atrocity MC Version, Charter', 'https://youtube.com/thegabodiaz', 0xFF5EEBD8],
 		['TRaCEDINPURPLE', 'tiago', 'Co-Creator - Main Coder, Menus', 'https://youtube.com/tracedinpurple', 0xFF41009C],
-    	[''],
+    	['CHROMaSEN', '', 'Extra Coder, Helper', 'https://twitter.com/chromasen', 0xFF41009C],
 		['ORIGINaL SONG BY'],
 		['SaSTER', 'saster', 'Creator of Atrocity | Provider of the FLP/MIDI files!', 'https://www.youtube.com/channel/UCC4CkqOAwulRil3BEK9L3Mg', 0xFF41009C],
     	[''],

@@ -721,6 +721,16 @@ class PlayState extends MusicBeatState
 		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()));
 		//FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / 60));
 
+		if (curSong.toLowerCase() == 'atrocity')
+		    {	
+				
+				FlxG.camera.follow(camFollow, LOCKON, 0.11 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS()));
+
+
+
+				
+			}
+
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		FlxG.camera.focusOn(camFollow.getPosition());
