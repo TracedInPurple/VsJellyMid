@@ -209,6 +209,9 @@ class PlayState extends MusicBeatState
 
 	private var executeModchart = false;
 
+	var angleShit = 1;
+	var angleVar = 1;
+
 	// API stuff
 
 	public function addObject(object:FlxBasic) { add(object); }
@@ -1290,11 +1293,10 @@ class PlayState extends MusicBeatState
 		//	boyfriend.playAnim('idle');
 		if(SONG.song.toLowerCase() == 'atrocity')
 		{
-			cpuStrums.forEach(function(spr:FlxSprite)
-				{
-					spr.alpha = 0;
-				});
-
+			for (i in 0...4)
+			{
+				strumLineNotes.members[i].visible = false;
+			}
 		}
 
 		if (FlxG.keys.justPressed.ONE && !FlxG.save.data.SpectatorMode)
@@ -2760,6 +2762,9 @@ class PlayState extends MusicBeatState
 		if(SONG.song.toLowerCase() == 'atrocity')
 		{
 			FlxG.mouse.visible = false; // idont like this mouse being >:(
+				cpuStrums.visible = false;
+
+					
 
 
 
@@ -2917,26 +2922,42 @@ class PlayState extends MusicBeatState
 			{
 				FlxG.camera.zoom += 0.020;
 				camHUD.zoom += 0.02;
-				trace(FlxG.camera.zoom);
 			}
 		if (SONG.song.toLowerCase() == 'atrocity' && curBeat >= 128 && curBeat < 192)
 			{
 				FlxG.camera.zoom += 0.020;
 				camHUD.zoom += 0.02;
-				trace(FlxG.camera.zoom);
 			}
 		if (SONG.song.toLowerCase() == 'atrocity' && curBeat >= 320 && curBeat < 378)
 			{
 				FlxG.camera.zoom += 0.020;
 				camHUD.zoom += 0.02;
-				trace(FlxG.camera.zoom);
 			}
 		if (SONG.song.toLowerCase() == 'atrocity' && curBeat >= 384 && curBeat < 448)
 			{
 				FlxG.camera.zoom += 0.050;
 				camHUD.zoom += 0.02;
-				trace(FlxG.camera.zoom);
 			}
+
+			//if (curBeat % 2 == 0) 
+			//	angleShit = angleVar;
+			//else
+			//	angleShit = -angleVar;
+//
+			//FlxG.camera.zoom += 0.1;
+			//camHUD.zoom += 0.09;
+//
+			//camHUD.angle = angleShit*3;
+			//FlxG.camera.angle = angleShit*3;
+//
+			//FlxTween.tween(camHUD, {x: -angleShit*8}, 0.2, {ease: FlxEase.linear});
+			//FlxTween.tween(camHUD, {angle: angleShit}, 0.3, {ease: FlxEase.circOut});
+			//
+//
+			//FlxTween.tween(camGame, {x: -angleShit*8}, 0.2, {ease: FlxEase.linear});
+			//FlxTween.tween(camGame, {angle: angleShit}, 0.3, {ease: FlxEase.circOut});
+			
+
 	}
 
 	var curLight:Int = 0;
