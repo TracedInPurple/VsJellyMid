@@ -1290,7 +1290,10 @@ class PlayState extends MusicBeatState
 		//	boyfriend.playAnim('idle');
 		if(SONG.song.toLowerCase() == 'atrocity')
 		{
-			cpuStrums.visible = false;
+			cpuStrums.forEach(function(spr:FlxSprite)
+				{
+					spr.alpha = 0;
+				});
 		}
 
 		if (FlxG.keys.justPressed.ONE && !FlxG.save.data.SpectatorMode)
