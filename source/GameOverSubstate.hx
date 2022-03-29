@@ -27,6 +27,8 @@ class GameOverSubstate extends MusicBeatSubstate
 				daBf = 'bf-pixel-dead';
 			case 'bfminecraft':
 				daBf = 'bfminecraft-death';
+			case 'jellybean':
+				daBf = 'jelly-death';
 			default:
 				daBf = 'bf';
 		}

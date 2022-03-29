@@ -281,6 +281,21 @@ class Character extends FlxSprite
 
 					flipX = true;
 
+				case 'jelly-death':
+					frames = Paths.getSparrowAtlas('characters/jelly-death');
+					
+					animation.addByPrefix('firstDeath', "sad jelly idle", 24, false);
+
+					addOffset('firstDeath', 47, 11);
+					playAnim('firstDeath');
+
+					setGraphicSize(Std.int(width * 0.8));
+					updateHitbox();
+		
+					antialiasing = true;
+						
+					flipX = true;
+
 				case 'skeleton':
 					iconColor = 'FFA26060';
 					frames = Paths.getSparrowAtlas('characters/skeleton');

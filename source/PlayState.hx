@@ -2502,10 +2502,6 @@ class PlayState extends MusicBeatState
 			keyShit();
 
 
-		#if debug
-		if (FlxG.keys.justPressed.ONE)
-			endSong();
-		#end
 	}
 
 	function endSong():Void
@@ -3468,16 +3464,19 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
-		//f (curStep == 1514 && curSong == 'atrocity')
+		//if (curStep == 1514 && curSong == 'atrocity')
 		//
 		//	dad.playAnim('watchThis', true);
 		//
 		if(SONG.song.toLowerCase() == 'atrocity')
 		{
+			FlxG.mouse.visible = false; // idont like this mouse being >:(
+
+
+
 			switch(curStep)
 			{
-				case 1514:
-					dad.playAnim('watchThis', true);
+				case 1514 :dad.playAnim('watchThis', true);
 				case 1535:
 					remove(dad);
 					dad = new Character(100, 100, 'skeletonguitar');
@@ -3600,6 +3599,7 @@ class PlayState extends MusicBeatState
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
+
 
 		if (curSong == 'espionage' && curBeat >= 224 && curBeat < 288)
 			{
