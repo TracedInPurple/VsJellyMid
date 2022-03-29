@@ -92,8 +92,6 @@ class PlayState extends MusicBeatState
 
 	public static var noteBools:Array<Bool> = [false, false, false, false];
 
-	var halloweenLevel:Bool = false;
-    var spinArray:Array<Int>;
 	var songLength:Float = 0;
 	var kadeEngineWatermark:FlxText;
 
@@ -158,9 +156,6 @@ class PlayState extends MusicBeatState
 
 	var notesHitArray:Array<Date> = [];
 	var currentFrames:Int = 0;
-
-	public var dialogue:Array<String> = ['dad:blah blah blah', 'bf:coolswag'];
-
 	var daSection:Int = 1;
 
 	var songName:FlxText;
@@ -168,8 +163,6 @@ class PlayState extends MusicBeatState
 	var skeletons:FlxSprite; 
 	var vignette:FlxSprite; 
 	var fc:Bool = true;
-
-	var evilTrail:FlxTrail;
 
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 
@@ -180,8 +173,6 @@ class PlayState extends MusicBeatState
 	var scoreTxTMovement:FlxTween;
 	var replayTxt:FlxText;
 
-	public static var duoDadSONG:SwagSong;
-	private var duoDadNotes:FlxTypedGroup<Note>;
 
 	public static var campaignScore:Int = 0;
 
@@ -246,7 +237,6 @@ class PlayState extends MusicBeatState
 		goods = 0;
 
 		misses = 0;
-        spinArray = [272, 276, 336, 340, 400, 404, 464, 468, 528, 532, 592, 596, 656, 660, 720, 724, 789, 793, 863, 867, 937, 941, 1012, 1016, 1086, 1090, 1160, 1164, 1531, 1535, 1607, 1611, 1681, 1685, 1754, 1758];
 		repPresses = 0;
 		repReleases = 0;
 
@@ -423,6 +413,7 @@ class PlayState extends MusicBeatState
 		if (curStage == 'jelly')
 		{
 			remove(gf);
+			cpustrums.visible = false;
 		}
 
 		add(dad);
@@ -612,7 +603,6 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-		doof.cameras = [camHUD];
 
 
 		if (FlxG.save.data.songPosition)
@@ -1406,14 +1396,7 @@ class PlayState extends MusicBeatState
 			persistentDraw = true;
 			paused = true;
 
-			// 1 / 1000 chance for Gitaroo Man easter egg
-			if (FlxG.random.bool(0.1))
-			{
-				trace('GITAROO MAN EASTER EGG');
-				FlxG.switchState(new GitarooPause());
-			}
-			else
-				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+			openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 		}
 
 		if (FlxG.keys.justPressed.SEVEN)
@@ -2060,18 +2043,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.music.stop();
 
 					LoadingState.loadAndSwitchState(new PlayState());
-					//disabled this cuz it just doesnt work -- never mind
-
-					//i need help
-					//help
-					/*switch (SONG.song.toLowerCase())
-					{
-						case 'suit up':
-							LoadingState.loadAndSwitchState(new VideoState("assets/videos/armorsteve.webm", new PlayState()));
-						
-						default:
-							LoadingState.loadAndSwitchState(new PlayState());
-					}*/
+					
 				}
 			}
 			else
@@ -2644,26 +2616,6 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	/*function badNoteCheck()
-		{
-			// just double pasting this shit cuz fuk u
-			// REDO THIS SYSTEM!
-			var upP = controls.UP_P;
-			var rightP = controls.RIGHT_P;
-			var downP = controls.DOWN_P;
-			var leftP = controls.LEFT_P;
-	
-			if (leftP)
-				noteMiss(0);
-			if (upP)
-				noteMiss(2);
-			if (rightP)
-				noteMiss(3);
-			if (downP)
-				noteMiss(1);
-			updateAccuracy();
-		}
-	*/
 	function updateAccuracy() 
 		{
 			totalPlayed += 1;
@@ -2700,42 +2652,10 @@ class PlayState extends MusicBeatState
 
 			note.rating = Ratings.CalculateRating(noteDiff);
 
-			/* if (loadRep)
-			{
-				if (controlArray[note.noteData])
-					goodNoteHit(note, false);
-				else if (rep.replay.keyPresses.length > repPresses && !controlArray[note.noteData])
-				{
-					if (NearlyEquals(note.strumTime,rep.replay.keyPresses[repPresses].time, 4))
-					{
-						goodNoteHit(note, false);
-					}
-				}
-			} */
 
 			if (controlArray[note.noteData])
 			{
 				goodNoteHit(note, (mashing > getKeyPresses(note)));
-
-				/*if (mashing > getKeyPresses(note) && mashViolations <= 2)
-				{
-					mashViolations++;
-					goodNoteHit(note, (mashing > getKeyPresses(note)));
-				}
-				else if (mashViolations > 2)
-				{
-					// this is bad but fuck you
-					playerStrums.members[0].animation.play('static');
-					playerStrums.members[1].animation.play('static');
-					playerStrums.members[2].animation.play('static');
-					playerStrums.members[3].animation.play('static');
-					health -= 0.4;
-					trace('mash ' + mashing);
-					if (mashing != 0)
-						mashing = 0;
-				}
-				else
-					goodNoteHit(note, false);*/
 
 			}
 		}
@@ -2868,48 +2788,6 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if(SONG.song.toLowerCase() == 'espionage')
-			{
-				switch (curStep)
-				{
-						
-	
-					case 64:
-						new FlxTimer().start(0.001, function(tmr:FlxTimer)
-						{
-							dad.alpha += 0.01;
-				
-							if (dad.alpha < 1)
-							{
-								tmr.reset(0.001);
-							}
-						});
-						FlxTween.tween(FlxG.camera, {zoom: 1.5}, 4, {ease: FlxEase.quadOut});
-
-					case 96:
-						FlxTween.tween(FlxG.camera, {zoom: 0.8}, 6, {ease: FlxEase.quadOut});
-					
-
-				}			
-			}
-
-			if(SONG.song.toLowerCase() == 'retired')
-				{
-					switch (curStep)
-					{
-						case 1:
-							FlxTween.tween(FlxG.camera, {zoom: 1.2}, 4.49, {ease: FlxEase.quadOut});
-						case 48:
-							FlxTween.tween(FlxG.camera, {zoom: 0.7}, 4.5, {ease: FlxEase.quadOut});
-						case 720:
-							FlxTween.tween(FlxG.camera, {zoom: 1.5}, 5.9, {ease: FlxEase.quadOut});
-						case 768:
-							FlxTween.tween(FlxG.camera, {zoom: 0.7}, 1.5, {ease: FlxEase.quadOut});
-						
-	
-					}			
-				}
-
 		#if windows
 		if (executeModchart && luaModchart != null)
 		{
@@ -2923,6 +2801,7 @@ class PlayState extends MusicBeatState
 		// yes this updates every step.
 		// yes this is bad
 		// but i'm doing it to update misses and accuracy
+		/*
 		#if windows
 		// Song duration in a float, useful for the time left feature
 		songLength = FlxG.sound.music.length;
@@ -2930,6 +2809,7 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "Acc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC,true,  songLength - Conductor.songPosition);
 		#end
+		*/
 
 	}
 	override function beatHit()
@@ -2949,20 +2829,14 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (curSong == 'Tutorial' && dad.curCharacter == 'gf') {
-			if (curBeat % 2 == 1 && dad.animOffsets.exists('danceLeft'))
-				dad.playAnim('danceLeft');
-			if (curBeat % 2 == 0 && dad.animOffsets.exists('danceRight'))
-				dad.playAnim('danceRight');
-		}
-		if (curSong == 'Lost')
-		{
-			{
-			remove(dad);
-			}
-		}
+		// instead of doing it every step, why not every beat, ik it gets less real time accurate but cmon, do we really care about this small detail? - Tiago
+		#if windows
+		// Song duration in a float, useful for the time left feature
+		songLength = FlxG.sound.music.length;
 
-
+		// Updating Discord Rich Presence (with Time Left)
+		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "Acc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC,true,  songLength - Conductor.songPosition);
+		#end
 
 		if (SONG.notes[Math.floor(curStep / 16)] != null)
 		{
@@ -2982,14 +2856,6 @@ class PlayState extends MusicBeatState
 		wiggleShit.update(Conductor.crochet);
 
 
-		if (curSong == 'espionage' && curBeat >= 224 && curBeat < 288)
-			{
-				FlxG.camera.zoom += 0.05;
-				camHUD.zoom += 0.03;
-				trace(FlxG.camera.zoom);
-			}
-
-
 		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0)
 		{
 			FlxG.camera.zoom += 0.025;
@@ -3002,9 +2868,9 @@ class PlayState extends MusicBeatState
 			curBeat % (gfSpeed * 2) == 0 ? 
 			{
 				iconP1.scale.set(1.1, 0.8);
-				FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});	
+				//FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});	
 				iconP2.scale.set(1.1, 0.8);
-				FlxTween.angle(iconP2, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				//FlxTween.angle(iconP2, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 				//FlxTween.angle(iconP2, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 				//FlxTween.angle(iconP1, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 			} 
@@ -3025,17 +2891,6 @@ class PlayState extends MusicBeatState
 		}
 
 
-
-
-		//iconP1.scale.set(1.15, 1.15);
-		//iconP2.scale.set(1.15, 1.15);
-		//
-		//FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartInOut});
-		//FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartInOut});
-//
-		//iconP1.updateHitbox();
-		//iconP2.updateHitbox();
-
 		if (curBeat % gfSpeed == 0)
 		{
 			gf.dance();
@@ -3048,7 +2903,8 @@ class PlayState extends MusicBeatState
 
 		if (!dad.animation.curAnim.name.startsWith("sing") || !dad.animation.curAnim.name.startsWith("watchThis") || !dad.animation.curAnim.name.startsWith("idle-alt"))
 		{
-			dad.dance();
+			if(dad.animation.finished)
+				dad.dance();
 		}
 
 
@@ -3090,18 +2946,6 @@ class PlayState extends MusicBeatState
 	var curLight:Int = 0;
 }
 //if you're reading this, heeelllooo from Tiago :P
-
-//					Hey there Porters/Modders or Viewers that are looking at this Code...
-//					Quick note to any of you who's trying to port this to any type of platform from scratch
-//					I (Tiago) did a shit ton of rework on the health layering of the Health bar... (Not much LOL)
-//					If you want to port that aswell take a good look at the code to know how its done...
-//					Yea.. Thats all, ive had a lot of fun with this mod and i actually learned a lot lol...	
-//					When i entered the Development of the Mod, i had ABSOLUTELY no idea how haxe works
-//					But i kinda started unserstanding how stuff works by look at it and trying to understand how it works, which is actaully very
-//					understandable..
-//					So if any of you guys reading this is willing to make a mod but doesnt want to learn Haxe, trying using the *tecniques* i just described...
-//					Or stick to the manual LOL
-//					
-//					Welp...
-// 					Kind Regards 
+		// pleaaase dont port this into any other engine, thank you!
+		// this is a heavily edited vs steve version lmao- we literally made both mods
 //					Tiago (TracedInPurple)
