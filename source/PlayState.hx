@@ -1294,6 +1294,7 @@ class PlayState extends MusicBeatState
 				{
 					spr.alpha = 0;
 				});
+
 		}
 
 		if (FlxG.keys.justPressed.ONE && !FlxG.save.data.SpectatorMode)
