@@ -3483,6 +3483,12 @@ class PlayState extends MusicBeatState
 					dad.x -= 340;
 					dad.y -= 335;
 					add(dad);
+				case 1825:
+					remove(dad);
+					dad = new Character(100, 100, 'skeleton');
+					dad.x -= 340;
+					dad.y -= 335;
+					add(dad);
 				
 			}
 		}
