@@ -2360,7 +2360,7 @@ class PlayState extends MusicBeatState
 								altAnim = '-alt';
 						}
 
-						if (dad.animation.curAnim.name != 'hit' || dad.animation.curAnim.name != 'prepare' || dad.animation.curAnim.name != 'bonk' || dad.animation.curAnim.name != 'unequipPickaxe' || dad.animation.curAnim.name == 'idle-alt')
+						if (dad.animation.curAnim.name != 'watchThis')
 							{
 								switch (Math.abs(daNote.noteData))
 								{
@@ -2746,87 +2746,6 @@ class PlayState extends MusicBeatState
 
 			pixelShitPart1 = 'hudassets/';
 			pixelShitPart2 = '-pixel';
-
-			//if (curStage.startsWith('school'))
-			//{
-			//	pixelShitPart1 = 'weeb/pixelUI/';
-			//	pixelShitPart2 = '-pixel';
-			//}
-			//if (curStage.startsWith('house'))
-			//{
-			//	pixelShitPart1 = 'house/pixelUI/';
-			//	pixelShitPart2 = '-pixel';
-			//}
-			//if (curStage.startsWith('entity'))
-			//{
-			//	pixelShitPart1 = 'entity/pixelUI/';
-			//	pixelShitPart2 = '-pixel';
-			//}
-			//if (curStage.startsWith('cave'))
-			//{
-			//	pixelShitPart1 = 'cave/pixelUI/';
-			//	pixelShitPart2 = '-pixel';
-			//}
-			//if (curStage.startsWith('mine'))
-			//{
-			//	pixelShitPart1 = 'mine/pixelUI/';
-			//	pixelShitPart2 = '-pixel';
-			//}
-			//if (curStage.startsWith('awwman'))
-			//{
-			//	pixelShitPart1 = 'awwman/pixelUI/';
-			//	pixelShitPart2 = '-pixel';
-			//}
-			//if (curStage.startsWith('devs'))
-			//{
-			//	pixelShitPart1 = 'devs/pixelUI/';
-			//	pixelShitPart2 = '-pixel';
-			//}
-			//if (curStage.startsWith('notch'))
-			//{
-			//	pixelShitPart1 = 'temple/pixelUI/';
-			//	pixelShitPart2 = '-pixel';
-			//}
-			//if (curStage.startsWith('littleman'))
-			//	{
-			//		pixelShitPart1 = 'littleman/pixelUI/';
-			//		pixelShitPart2 = '-pixel';
-			//	}
-			//if (curStage.startsWith('lost'))
-			//	{
-			//		pixelShitPart1 = 'lost/pixelUI/';
-			//		pixelShitPart2 = '-pixel';
-			//	}
-			//if (curStage.startsWith('tutorial'))
-			//	{
-			//		pixelShitPart1 = 'tutorial/pixelUI/';
-			//		pixelShitPart2 = '-pixel';
-			//	}
-			//if (curStage.startsWith('tf2'))
-			//{
-			//	pixelShitPart1 = 'tf2/pixelUI/';
-			//	pixelShitPart2 = '-pixel';
-			//}
-			//if (curStage.startsWith('mcsm'))
-			//	{
-			//		pixelShitPart1 = 'mcsm/pixelUI/';
-			//		pixelShitPart2 = '-pixel';
-			//	}
-			//if (curStage.startsWith('espionage'))
-			//	{
-			//		pixelShitPart1 = 'espionage/pixelUI/';
-			//		pixelShitPart2 = '-pixel';
-			//	}
-			//if (curStage.startsWith('fasttravel'))
-			//	{
-			//		pixelShitPart1 = 'fasttravel/pixelUI/';
-			//		pixelShitPart2 = '-pixel';
-			//	}
-			//if (curStage.startsWith('templeentrance'))
-			//	{
-			//		pixelShitPart1 = 'templeentrance/pixelUI/';
-			//		pixelShitPart2 = '-pixel';
-			//	}
 
 			rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 			rating.screenCenter();
@@ -3476,13 +3395,15 @@ class PlayState extends MusicBeatState
 
 			switch(curStep)
 			{
-				case 1514 :dad.playAnim('watchThis', true);
+				case 1514:
+					dad.playAnim('watchThis', true);
 				case 1535:
 					remove(dad);
 					dad = new Character(100, 100, 'skeletonguitar');
 					dad.x -= 340;
 					dad.y -= 335;
 					add(dad);
+					FlxTween.tween(FlxG.camera, {zoom: 1.7}, 8, {ease: FlxEase.quadOut});
 				case 1825:
 					remove(dad);
 					dad = new Character(100, 100, 'skeleton');
@@ -3600,7 +3521,7 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'hit' && dad.animation.curAnim.name != 'bonk' && dad.animation.curAnim.name != 'prepare' && dad.animation.curAnim.name != 'unequipPickaxe' && dad.animation.curAnim.name == 'idle-alt' && dad.curCharacter != 'gf')
+			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.animation.curAnim.name != 'watchThis' && dad.curCharacter != 'gf')
 				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
@@ -3671,11 +3592,9 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 		}
 
-		if (!dad.animation.curAnim.name.startsWith("sing") || !dad.animation.curAnim.name.startsWith("unequipPickaxe") || !dad.animation.curAnim.name.startsWith("idle-alt"))
+		if (!dad.animation.curAnim.name.startsWith("sing") || !dad.animation.curAnim.name.startsWith("watchThis") || !dad.animation.curAnim.name.startsWith("idle-alt"))
 		{
 			dad.dance();
-			if (hasDuoDad)
-				duoDad.dance();
 		}
 
 
@@ -3688,25 +3607,25 @@ class PlayState extends MusicBeatState
 				}
 		}
 		
-		if (curSong == 'atrocity' && curBeat >= 64 && curBeat < 124)
+		if (SONG.song.toLowerCase() == 'atrocity' && curBeat >= 64 && curBeat < 124)
 			{
 				FlxG.camera.zoom += 0.020;
 				camHUD.zoom += 0.02;
 				trace(FlxG.camera.zoom);
 			}
-		if (curSong == 'atrocity' && curBeat >= 128 && curBeat < 192)
+		if (SONG.song.toLowerCase() == 'atrocity' && curBeat >= 128 && curBeat < 192)
 			{
 				FlxG.camera.zoom += 0.020;
 				camHUD.zoom += 0.02;
 				trace(FlxG.camera.zoom);
 			}
-		if (curSong == 'atrocity' && curBeat >= 320 && curBeat < 378)
+		if (SONG.song.toLowerCase() == 'atrocity' && curBeat >= 320 && curBeat < 378)
 			{
 				FlxG.camera.zoom += 0.020;
 				camHUD.zoom += 0.02;
 				trace(FlxG.camera.zoom);
 			}
-		if (curSong == 'atrocity' && curBeat >= 384 && curBeat < 448)
+		if (SONG.song.toLowerCase() == 'atrocity' && curBeat >= 384 && curBeat < 448)
 			{
 				FlxG.camera.zoom += 0.050;
 				camHUD.zoom += 0.02;
