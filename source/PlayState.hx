@@ -1828,13 +1828,6 @@ class PlayState extends MusicBeatState
 						});
 
 
-						var daSprite = dad;
-							switch (daNote.noteType)
-							{
-								case 10:
-									daSprite = duoDad;
-							}
-
 						#if windows
 						if (luaModchart != null)
 							luaModchart.executeState('playerTwoSing', [Math.abs(daNote.noteData), Conductor.songPosition]);
