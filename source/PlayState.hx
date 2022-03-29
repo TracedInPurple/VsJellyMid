@@ -3408,7 +3408,7 @@ class PlayState extends MusicBeatState
 						switch (note.noteData)
 						{
 							case 2:
-								bfnoteMovementYoffset = -40;
+								bfnoteMovementYoffset = -20;
 								bfnoteMovementXoffset = 0;
 								boyfriend.playAnim('singUP', true);
 							case 3:
@@ -3416,7 +3416,7 @@ class PlayState extends MusicBeatState
 								bfnoteMovementYoffset = 0;
 								boyfriend.playAnim('singRIGHT', true);
 							case 1:
-								bfnoteMovementYoffset = 20;
+								bfnoteMovementYoffset = 10;
 								bfnoteMovementXoffset = 0;
 								boyfriend.playAnim('singDOWN', true);
 							case 0:
@@ -3681,6 +3681,31 @@ class PlayState extends MusicBeatState
 					skeletons.animation.play('bop', false);
 				}
 		}
+		
+		if (curSong == 'atrocity' && curBeat >= 64 && curBeat < 124)
+			{
+				FlxG.camera.zoom += 0.020;
+				camHUD.zoom += 0.02;
+				trace(FlxG.camera.zoom);
+			}
+		if (curSong == 'atrocity' && curBeat >= 128 && curBeat < 192)
+			{
+				FlxG.camera.zoom += 0.020;
+				camHUD.zoom += 0.02;
+				trace(FlxG.camera.zoom);
+			}
+		if (curSong == 'atrocity' && curBeat >= 320 && curBeat < 378)
+			{
+				FlxG.camera.zoom += 0.020;
+				camHUD.zoom += 0.02;
+				trace(FlxG.camera.zoom);
+			}
+		if (curSong == 'atrocity' && curBeat >= 384 && curBeat < 448)
+			{
+				FlxG.camera.zoom += 0.050;
+				camHUD.zoom += 0.02;
+				trace(FlxG.camera.zoom);
+			}
 	}
 
 	var curLight:Int = 0;
