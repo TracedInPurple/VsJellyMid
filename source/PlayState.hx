@@ -413,7 +413,7 @@ class PlayState extends MusicBeatState
 		if (curStage == 'jelly')
 		{
 			remove(gf);
-			cpustrums.visible = false;
+			cpuStrums.visible = false;
 		}
 
 		add(dad);
@@ -431,9 +431,6 @@ class PlayState extends MusicBeatState
 			// FlxG.watch.addQuick('Queued',inputsQueued);
 		}
 
-		var doof:DialogueBox = new DialogueBox(false, dialogue);
-		doof.scrollFactor.set();
-		doof.finishThing = startCountdown;
 
 		Conductor.songPosition = -5000;
 
