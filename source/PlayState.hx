@@ -413,7 +413,6 @@ class PlayState extends MusicBeatState
 		if (curStage == 'jelly')
 		{
 			remove(gf);
-			cpuStrums.visible = false;
 		}
 
 		add(dad);
@@ -1289,7 +1288,10 @@ class PlayState extends MusicBeatState
 	
 		//	dad.dance();
 		//	boyfriend.playAnim('idle');
-		
+		if(SONG.song.toLowerCase() == 'atrocity')
+		{
+			cpuStrums.visible = false;
+		}
 
 		if (FlxG.keys.justPressed.ONE && !FlxG.save.data.SpectatorMode)
 			camHUD.visible = !camHUD.visible;
