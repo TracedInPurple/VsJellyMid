@@ -103,7 +103,7 @@ class MainMenuState extends MusicBeatState
 		var minecraft:FlxSprite = new FlxSprite().loadGraphic(Paths.image("jellymid"));
         minecraft.antialiasing = true;
 		minecraft.screenCenter();
-		minecraft.y -= 225;
+		minecraft.y -= 150;
         minecraft.updateHitbox();
 		add(minecraft);
 	
