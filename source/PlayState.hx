@@ -2770,8 +2770,10 @@ class PlayState extends MusicBeatState
 
 			switch(curStep)
 			{
-				case 1514:
-					dad.playAnim('watchThis', true);
+				case 1512: defaultCamZoom = 1.5;
+				case 1514:dad.playAnim('watchThis', true);
+				case 768: FlxTween.tween(camGame, {alpha: 0}, 0.25, {ease: FlxEase.expoOut,});
+				case 773: camGame.alpha = 1;
 				case 1535:
 					remove(dad);
 					dad = new Character(100, 100, 'skeletonguitar');
@@ -2779,8 +2781,7 @@ class PlayState extends MusicBeatState
 					dad.y -= 335;
 					add(dad);
 					FlxTween.tween(FlxG.camera, {zoom: 1.7}, 8, {ease: FlxEase.quadOut});
-					case 1876:
-						dad.playAnim('whatIsIt', true);
+					case 1876:		dad.playAnim('whatIsIt', true);
 				
 			}
 		}
