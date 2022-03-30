@@ -2779,12 +2779,8 @@ class PlayState extends MusicBeatState
 					dad.y -= 335;
 					add(dad);
 					FlxTween.tween(FlxG.camera, {zoom: 1.7}, 8, {ease: FlxEase.quadOut});
-				case 1825:
-					remove(dad);
-					dad = new Character(100, 100, 'skeleton');
-					dad.x -= 340;
-					dad.y -= 335;
-					add(dad);
+					case 1876:
+						dad.playAnim('whatIsIt', true);
 				
 			}
 		}

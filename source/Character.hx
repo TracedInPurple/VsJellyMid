@@ -306,14 +306,12 @@ class Character extends FlxSprite
 					animation.addByPrefix('singDOWN', 'skeleton down normal', 24, false);
 					animation.addByPrefix('watchThis', 'skeleton watch this', 24, false);
 	
-	
 					addOffset('idle', -250, -260);
 					addOffset("singUP", -254, -268);
 					addOffset("singRIGHT", -252, -257);
-					addOffset("singLEFT", -306, -270);
-					addOffset("singDOWN", -244, -260);
-					addOffset("watchThis", -249, -260);
-	
+					addOffset("singLEFT", -243, -258);
+					addOffset("singDOWN", -244, -270);
+					addOffset("watchThis", -250, -260);
 	
 					playAnim('idle');
 	
@@ -330,14 +328,14 @@ class Character extends FlxSprite
 					animation.addByPrefix('singLEFT', 'skeleton left guitar', 24, false);
 					animation.addByPrefix('singRIGHT', 'skeleton right guitar', 24, false);
 					animation.addByPrefix('singDOWN', 'skeleton down guitar', 24, false);
-
-	
+					animation.addByPrefix('whatIsIt', 'skeleton what is it', 24, false);
 	
 					addOffset('idle', -250, -260);
 					addOffset("singUP", -254, -268);
 					addOffset("singRIGHT", -252, -257);
-					addOffset("singLEFT", -306, -270);
-					addOffset("singDOWN", -244, -260);
+					addOffset("singLEFT", -243, -258);
+					addOffset("singDOWN", -244, -270);
+					addOffset("whatIsIt", -250, -260);
 	
 	
 					playAnim('idle');
