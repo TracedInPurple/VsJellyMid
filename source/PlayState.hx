@@ -861,7 +861,7 @@ class PlayState extends MusicBeatState
 			switch (SONG.song.toLowerCase())
 			{
 				case 'atrocity':
-					songStartText.text = 'Now Playing: Atorcity - Saster | Cover by TheGaboDiaz';
+					songStartText.text = 'Now Playing: Atrocity - Saster | Cover by TheGaboDiaz';
 
 				case 'jellymid':
 					songStartText.text = 'Now Playing: Jellymid - TheGaboDiaz';
