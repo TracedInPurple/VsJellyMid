@@ -379,7 +379,7 @@ class PlayState extends MusicBeatState
 			{
 				skeletons = new FlxSprite(0, 0);
 				skeletons.frames = Paths.getSparrowAtlas('jelly/bgskeletons');
-			 	skeletons.animation.addByPrefix('bop', 'bgskeletons idle', 24, false);
+			 	skeletons.animation.addByPrefix('bop', 'bgskeletons idle normal', 24, false);
 				skeletons.screenCenter(X);
 			 	skeletons.updateHitbox();
 			 	add(skeletons);
