@@ -91,6 +91,12 @@ class GameOverSubstate extends MusicBeatSubstate
 						{
 							FlxG.sound.play(Paths.soundRandom('voicelines/irfan', 1, 7), 1);
 						});
+					case 'atrocity':
+						FlxTween.tween(FlxG.sound.music, {volume: 0.1}, 0.3);
+						new FlxTimer().start(0.5, function(tmr:FlxTimer)
+						{
+							FlxG.sound.play(Paths.soundRandom('voicelines/waaaaa', 1, 7), 1);
+						});
 						
 				}
 		}

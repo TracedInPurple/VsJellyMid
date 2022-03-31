@@ -259,7 +259,6 @@ class Character extends FlxSprite
 					animation.addByPrefix('singRIGHTmiss', 'jellybean left miss', 24, false);
 					animation.addByPrefix('singLEFTmiss', 'jellybean right miss', 24, false);
 					animation.addByPrefix('singDOWNmiss', 'jellybean down miss', 24, false);
-					animation.addByPrefix('deathScreen', 'jellybean death screen', 24, false);
 	
 					addOffset('idle');
 					addOffset("singUP");
@@ -270,7 +269,6 @@ class Character extends FlxSprite
 					addOffset("singRIGHTmiss");
 					addOffset("singLEFTmiss");
 					addOffset("singDOWNmiss");
-					addOffset("deathScreen");
 	
 					playAnim('idle');
 	
@@ -284,9 +282,14 @@ class Character extends FlxSprite
 				case 'jelly-death':
 					frames = Paths.getSparrowAtlas('characters/jelly-death');
 					
-					animation.addByPrefix('firstDeath', "sad jelly idle", 24, false);
+					animation.addByPrefix('firstDeath', "jelly-death ouch", 24, false);
+					animation.addByPrefix('deathLoop', "jelly-death waaa", 24, true);
+					animation.addByPrefix('deathConfirm', "jelly-death waaa", 24, false);
+					
 
 					addOffset('firstDeath', 47, 11);
+					addOffset('deathLoop', -500, -129);
+					addOffset('deathConfirm', -500, -129);
 					playAnim('firstDeath');
 
 					setGraphicSize(Std.int(width * 0.8));
