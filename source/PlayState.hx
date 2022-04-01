@@ -160,7 +160,7 @@ class PlayState extends MusicBeatState
 
 	var songName:FlxText;
 
-	var skeletons:FlxSprite; 
+	var bgskeletons:FlxSprite; 
 	var vignette:FlxSprite; 
 	var fc:Bool = true;
 
@@ -317,10 +317,16 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 1.2;
 				curStage = 'jelly';
 
-				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('jelly/jellyben'));
-				bg.setGraphicSize(Std.int(bg.width * 1.9));
+				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('jelly/jellybensky'));
+				bg.setGraphicSize(Std.int(bg.width * 1.5));
 				bg.antialiasing = false;
-				bg.scrollFactor.set(1, 1);
+				bg.scrollFactor.set(0.3, 0.5);
+				add(bg);
+				
+				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('jelly/jellyben'));
+				bg.setGraphicSize(Std.int(bg.width * 1.5));
+				bg.antialiasing = false;
+				bg.scrollFactor.set(1.3, 1);
 				add(bg);
 
 			}
@@ -377,12 +383,13 @@ class PlayState extends MusicBeatState
 
 		if(curStage == 'jelly')
 			{
-				skeletons = new FlxSprite(0, 0);
-				skeletons.frames = Paths.getSparrowAtlas('jelly/bgskeletons');
-			 	skeletons.animation.addByPrefix('bop', 'bgskeletons idle normal', 24, false);
-				skeletons.screenCenter(X);
-			 	skeletons.updateHitbox();
-			 	add(skeletons);
+				bgskeletons = new FlxSprite(0, 0);
+				bgskeletons.frames = Paths.getSparrowAtlas('jelly/bgskeletons');
+			 	bgskeletons.animation.addByPrefix('bop', 'bgskeletons idle normal', 24, false);
+				bgskeletons.screenCenter(X);
+				bgskeletons.scrollFactor.set(1.2, 1);
+			 	bgskeletons.updateHitbox();
+			 	add(bgskeletons);
 			}
 
 		switch (SONG.player2)
@@ -2911,7 +2918,7 @@ class PlayState extends MusicBeatState
 		{
 			case 'jelly':
 				if(FlxG.save.data.distractions){
-					skeletons.animation.play('bop', false);
+					bgskeletons.animation.play('bop', false);
 				}
 		}
 		
