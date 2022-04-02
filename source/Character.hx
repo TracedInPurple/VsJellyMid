@@ -118,7 +118,7 @@ class Character extends FlxSprite
 				addOffset('danceLeft', 0);
 				addOffset('danceRight', 0);
 
-				setGraphicSize(Std.int(width * 1.1));
+				setGraphicSize(Std.int(width * 0.92));
 				updateHitbox();
 				antialiasing = true;
 
@@ -383,11 +383,11 @@ class Character extends FlxSprite
 	
 					antialiasing = true;
 
-			case 'bfminecraft-death': // tragically and sadly:((
-				frames = Paths.getSparrowAtlas('death/bfMinecraftDies.png', 'shared');
-				animation.addByPrefix('firstDeath', "bfMinecraftDies.png Dies", 24, false);
-				animation.addByPrefix('deathLoop', "bfMinecraftDies.png respawnButton", 24, true);
-				animation.addByPrefix('deathConfirm', "bfMinecraftDies.png respawnConfirm", 24, false);
+			case 'minecraftDEATH': // tragically and sadly:((
+				frames = Paths.getSparrowAtlas('death/minecraftDEATH');
+				animation.addByPrefix('firstDeath', "minecraftDEATH death", 24, false);
+				animation.addByPrefix('deathLoop', "minecraftDEATH despawn", 24, true);
+				animation.addByPrefix('deathConfirm', "minecraftDEATH despawn", 24, false);
 				animation.play('firstDeath');
 	
 				addOffset('firstDeath', 47, 11);

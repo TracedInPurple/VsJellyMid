@@ -402,9 +402,9 @@ class PlayState extends MusicBeatState
 			{
 				bgskeletons = new FlxSprite(0, 0);
 				bgskeletons.frames = Paths.getSparrowAtlas('jelly/bgskeletons');
-			 	bgskeletons.animation.addByPrefix('bop', 'bgskeletons idle normal', 24, false);
-				bgskeletons.animation.addByPrefix('transition', 'bgskeletons back skeletons transition', 24, false);
-				bgskeletons.animation.addByPrefix('idleback', 'bgskeletons idle back skeletons', 24, false);
+			 	bgskeletons.animation.addByPrefix('bop', 'bgskeletons idle back skeletons', 24, false);
+				//bgskeletons.animation.addByPrefix('transition', 'bgskeletons back skeletons transition', 24, false);
+				//bgskeletons.animation.addByPrefix('idleback', 'bgskeletons idle back skeletons', 24, false);
 				bgskeletons.screenCenter(X);
 				bgskeletons.scrollFactor.set(1.2, 1);
 			 	bgskeletons.updateHitbox();
@@ -2802,6 +2802,7 @@ class PlayState extends MusicBeatState
 		//
 		//	dad.playAnim('watchThis', true);
 		//
+
 		if(SONG.song.toLowerCase() == 'atrocity')
 		{
 			FlxG.mouse.visible = false; // idont like this mouse being >:(
@@ -2814,8 +2815,8 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(FlxG.camera, {zoom: 1.5}, 1, {ease: FlxEase.quadOut});
 				case 1514:
 					dad.playAnim('watchThis', true);
-				case 1530:
-						bgskeletons.animation.play('transition', true);
+				//case 1530:
+				//		bgskeletons.animation.play('transition', true);
 				case 1535:
 					remove(dad);
 					dad = new Character(100, 100, 'skeletonguitar');
@@ -2956,8 +2957,8 @@ class PlayState extends MusicBeatState
 				{
 					if(curBeat >= 1 && curBeat < 378)
 					bgskeletons.animation.play('bop', false);
-					if(curBeat >= 380)
-						bgskeletons.animation.play('idleback', false);
+					//if(curBeat >= 380)
+					//bgskeletons.animation.play('idleback', false);
 
 				}
 		}
@@ -2993,14 +2994,14 @@ class PlayState extends MusicBeatState
 				FlxG.camera.zoom += 0.07;
 				camHUD.zoom += 0.04;
 	
-				camHUD.angle = angleShit*3;
-				FlxG.camera.angle = angleShit*3;
+				camHUD.angle = angleShit*1.5;
+				FlxG.camera.angle = angleShit*1.5;
 	
-				FlxTween.tween(camHUD, {x: -angleShit*8}, 0.2, {ease: FlxEase.linear});
+				FlxTween.tween(camHUD, {x: -angleShit*6}, 0.2, {ease: FlxEase.linear});
 				FlxTween.tween(camHUD, {angle: angleShit}, 0.3, {ease: FlxEase.circOut});
 	
 	
-				FlxTween.tween(camGame, {x: -angleShit*8}, 0.2, {ease: FlxEase.linear});
+				FlxTween.tween(camGame, {x: -angleShit*6}, 0.2, {ease: FlxEase.linear});
 				FlxTween.tween(camGame, {angle: angleShit}, 0.3, {ease: FlxEase.circOut});
 			}
 
