@@ -1,7 +1,7 @@
 bf
-bf-pixel
-bfminecraft
-gf-pixel
+bf-minecraft
+gf-minecraft
 gf-christmas
+jellymid
 jellybean
 skeleton
