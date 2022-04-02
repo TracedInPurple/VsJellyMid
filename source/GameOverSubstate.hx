@@ -25,7 +25,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			case 'bf-pixel':
 				stageSuffix = '-pixel';
 				daBf = 'bf-pixel-dead';
-			case 'bfminecraft':
+			case 'bf-minecraft':
 				daBf = 'bfminecraft-death';
 			case 'jellybean':
 				daBf = 'jelly-death';

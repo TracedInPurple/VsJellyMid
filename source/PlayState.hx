@@ -403,6 +403,8 @@ class PlayState extends MusicBeatState
 				bgskeletons = new FlxSprite(0, 0);
 				bgskeletons.frames = Paths.getSparrowAtlas('jelly/bgskeletons');
 			 	bgskeletons.animation.addByPrefix('bop', 'bgskeletons idle normal', 24, false);
+				 bgskeletons.animation.addByPrefix('transition', 'bgskeletons back skeletons transition', 24, false);
+				 bgskeletons.animation.addByPrefix('idleback', 'bgskeletons idle back skeletons', 24, false);
 				bgskeletons.screenCenter(X);
 				bgskeletons.scrollFactor.set(1.2, 1);
 			 	bgskeletons.updateHitbox();
@@ -2823,6 +2825,7 @@ class PlayState extends MusicBeatState
 				
 			}
 		}
+		//if (SONG.song.toLowerCase() == 'atrocity'){ FlxG.mouse.visible = false; cpuStrums.visible = false; switch(curStep){case 1512: defaultCamZoom = 1.5; case 1514:dad.playAnim('watchThis', true); case 1516: bgskeletons.animation.play('skeletonstransition', false); case 1532: if(FlxG.save.data.distractions){ bgskeletons.animation.play('bgskeletons idle back skeletons', false);} case 1535: remove(dad); dad = new Character(100, 100, 'skeletonguitar'); dad.x -= 340; dad.y -= 335; add(dad); FlxTween.tween(FlxG.camera, {zoom: 1.7}, 8, {ease: FlxEase.quadOut}); case 1876:	dad.playAnim('whatIsIt', true);}} // bro i just did the 1 line code and animation for transition not work wtfffffffffff chromasen
 
 		#if windows
 		if (executeModchart && luaModchart != null)
@@ -2937,7 +2940,7 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 		}
 
-		if (!dad.animation.curAnim.name.startsWith("sing") || !dad.animation.curAnim.name.startsWith("watchThis") || !dad.animation.curAnim.name.startsWith("idle-alt"))
+		if (!dad.animation.curAnim.name.startsWith("sing") || !dad.animation.curAnim.name.startsWith("watchThis") || !bgskeletons.animation.curAnim.name.startsWith("transition") || !bgskeletons.animation.curAnim.name.startsWith("idleback")|| !dad.animation.curAnim.name.startsWith("idle-alt"))
 		{
 			if(dad.animation.finished)
 				dad.dance();
