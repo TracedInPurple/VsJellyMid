@@ -222,7 +222,7 @@ class TitleState extends MusicBeatState
 
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
+		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('logoBumpin'));
 		add(ngSpr);
 		ngSpr.visible = false;
 		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
@@ -439,10 +439,10 @@ class TitleState extends MusicBeatState
 			// credTextShit.screenCenter();
 			case 5:
 			
-				createCoolText(['Kade Engine', 'highly Modified by']);
+				createCoolText(['From the', 'creators of']);
 
 			case 7:
-				addMoreText('TracedInPurple');
+				addMoreText('');
 				ngSpr.visible = true;
 		
 			// credTextShit.text += '\nNewgrounds';
