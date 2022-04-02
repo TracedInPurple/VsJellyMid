@@ -108,6 +108,22 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
+			case 'gf-minecraft':
+				iconColor = 'FFB03060';
+				tex = Paths.getSparrowAtlas('characters/gf-minecraft');
+				frames = tex;
+				animation.addByIndices('danceLeft', 'gf-minecraft GF dance', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 30, false);
+				animation.addByIndices('danceRight', 'gf-minecraft GF dance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30], "", 30, false);
+
+				addOffset('danceLeft', 0);
+				addOffset('danceRight', 0);
+
+				setGraphicSize(Std.int(width * 0.92));
+				updateHitbox();
+				antialiasing = false;
+
+				playAnim('danceRight');
+
 			case 'gf-pixel':
 				iconColor = 'FFB03060';
 				tex = Paths.getSparrowAtlas('characters/gfPixel');
@@ -211,17 +227,18 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 				flipX = true;
-			case 'bfminecraft':
-				frames = Paths.getSparrowAtlas('characters/bfMinecraft');
-				animation.addByPrefix('idle', 'bfMinecraft Idle', 24, false);
-				animation.addByPrefix('singUP', 'bfMinecraft up note', 24, false);
-				animation.addByPrefix('singLEFT', 'bfMinecraft left note', 24, false);
-				animation.addByPrefix('singRIGHT', 'bfMinecraft right note', 24, false);
-				animation.addByPrefix('singDOWN', 'bfMinecraft down note', 24, false);
-				animation.addByPrefix('singUPmiss', 'bfMinecraft up miss', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'bfMinecraft left miss', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'bfMinecraft right miss', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'bfMinecraft down miss', 24, false);
+
+			case 'bf-minecraft':
+				frames = Paths.getSparrowAtlas('characters/bf-minecraft');
+				animation.addByPrefix('idle', 'bf-minecraft idle', 24, false);
+				animation.addByPrefix('singUP', 'bf-minecraft up note', 24, false);
+				animation.addByPrefix('singRIGHT', 'bf-minecraft left note', 24, false);
+				animation.addByPrefix('singLEFT', 'bf-minecraft right note', 24, false);
+				animation.addByPrefix('singDOWN', 'bf-minecraft down note', 24, false);
+				animation.addByPrefix('singUPmiss', 'bf-minecraft up miss', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'bf-minecraft left miss', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'bf-minecraft right miss', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'bf-minecraft down miss', 24, false);
 
 				addOffset('idle');
 				addOffset("singUP");
@@ -233,7 +250,7 @@ class Character extends FlxSprite
 				addOffset("singLEFTmiss");
 				addOffset("singDOWNmiss");
 
-				setGraphicSize(Std.int(width * 5.8));
+				setGraphicSize(Std.int(width * 0.9));
 				updateHitbox();
 
 				playAnim('idle');
@@ -245,7 +262,27 @@ class Character extends FlxSprite
 
 				flipX = true;
 
-				
+				case 'jellymid':
+					iconColor = 'FF582B68';
+					frames = Paths.getSparrowAtlas('characters/jellymid');
+					animation.addByPrefix('idle', 'jellymid idle', 24, false);
+					animation.addByPrefix('singUP', 'jellymid up', 24, false);
+					animation.addByPrefix('singLEFT', 'jellymid left', 24, false);
+					animation.addByPrefix('singRIGHT', 'jellymid right', 24, false);
+					animation.addByPrefix('singDOWN', 'jellymid down', 24, false);
+	
+					addOffset('idle', -250, -260);
+					addOffset("singUP", -232, -258);
+					addOffset("singRIGHT", -243, -257);
+					addOffset("singLEFT", -243, -258);
+					addOffset("singDOWN", -246, -256);
+	
+					playAnim('idle');
+	
+					setGraphicSize(Std.int(width * 0.85));
+					updateHitbox();
+	
+					antialiasing = true;
 
 				case 'jellybean':
 					iconColor = 'FF582B68';
@@ -456,6 +493,16 @@ class Character extends FlxSprite
 					}
 
 				case 'gf-car':
+					if (!animation.curAnim.name.startsWith('hair'))
+					{
+						danced = !danced;
+
+						if (danced)
+							playAnim('danceRight');
+						else
+							playAnim('danceLeft');
+					}
+				case 'gf-minecraft':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;

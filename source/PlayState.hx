@@ -312,6 +312,21 @@ class PlayState extends MusicBeatState
 
 		switch(SONG.stage)
 		{
+			case 'parkour':
+			{
+				defaultCamZoom = 1.2;
+				curStage = 'parkour';
+
+				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('parkour/parkour'));
+				bg.setGraphicSize(Std.int(bg.width * 2.45));
+				bg.antialiasing = false;
+				bg.scrollFactor.set(1, 1);
+				bg.y -= 150;
+				bg.x -= 0;
+				add(bg);
+
+			}
+
 			case 'jelly':
 			{
 				defaultCamZoom = 1.2;
@@ -366,6 +381,8 @@ class PlayState extends MusicBeatState
 		{
 			case 'gf-car':
 				gfVersion = 'gf-car';
+			case 'gf-minecraft':
+				gfVersion = 'gf-minecraft';
 			case 'gf-christmas':
 				gfVersion = 'gf-christmas';
 			case 'gf-pixel':
@@ -394,6 +411,10 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.player2)
 		{
+			case 'jellymid':
+				dad.x -= 550;
+				dad.y -= 310;
+				camPos.set(dad.getGraphicMidpoint().x + 0, dad.getGraphicMidpoint().y);
 			case 'skeleton':
 				dad.x -= 340;
 				dad.y -= 335;
@@ -411,6 +432,12 @@ class PlayState extends MusicBeatState
 		// REPOSITIONING PER STAGE
 		switch (curStage)
 		{
+			case 'parkour':
+				boyfriend.x -= 250;
+				boyfriend.y -= 305;
+				gf.x -= 325;
+				gf.y -= 35;
+
 			case 'jelly':
 				boyfriend.x -= 750;
 				boyfriend.y -= 390;
@@ -474,13 +501,9 @@ class PlayState extends MusicBeatState
 		add(camFollow);
 
 
-		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()));
-		//FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / 60));
-
-		if (SONG.song.toLowerCase() == 'atrocity')
-		    {		
-			FlxG.camera.follow(camFollow, LOCKON, 0.11 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS()));
-		    }
+		//FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / 60));	
+		FlxG.camera.follow(camFollow, LOCKON, 0.11 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS()));
+			
 
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
@@ -696,6 +719,7 @@ class PlayState extends MusicBeatState
 			
 			introAssets.set('default', ['ready', "set", "go"]);
 			introAssets.set('jelly', ['ready', "set", "go"]);
+			introAssets.set('parkour', ['ready', "set", "go"]);
 
 			var introAlts:Array<String> = introAssets.get('default');
 			var altSuffix:String = "";
@@ -1069,7 +1093,7 @@ class PlayState extends MusicBeatState
 			switch (SONG.noteStyle)
 			{
 				case 'pixel':
-					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
+					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/funkyArrows-pixels', 'week6'), true, 17, 17);
 					babyArrow.animation.add('green', [6]);
 					babyArrow.animation.add('red', [7]);
 					babyArrow.animation.add('blue', [5]);
@@ -1561,6 +1585,10 @@ class PlayState extends MusicBeatState
 
 				switch (dad.curCharacter)
 				{
+					case 'jellymid':
+						camFollow.y = dad.getMidpoint().y + 180 + dadnoteMovementYoffset;
+						camFollow.x = dad.getMidpoint().x + 300 + dadnoteMovementXoffset;
+						defaultCamZoom = 0.7;
 					case 'skeleton':
 						camFollow.y = dad.getMidpoint().y + 180 + dadnoteMovementYoffset;
 						camFollow.x = dad.getMidpoint().x + 300 + dadnoteMovementXoffset;
@@ -1592,6 +1620,11 @@ class PlayState extends MusicBeatState
 
 				switch (curStage) 
 				{
+					case 'parkour':
+						camFollow.x = boyfriend.getMidpoint().x - 50 + bfnoteMovementXoffset;
+						camFollow.y = boyfriend.getMidpoint().y - 50 + bfnoteMovementYoffset;
+						defaultCamZoom = 0.85;
+
 					case 'jelly':
 						camFollow.x = boyfriend.getMidpoint().x - -140 + bfnoteMovementXoffset;
 						camFollow.y = boyfriend.getMidpoint().y - -50 + bfnoteMovementYoffset;
@@ -1815,11 +1848,11 @@ class PlayState extends MusicBeatState
 								{
 									case 2:
 										dad.playAnim('singUP' + altAnim, true);
-										dadnoteMovementYoffset = -40;
+										dadnoteMovementYoffset = -20;
 										dadnoteMovementXoffset = 0;
 									case 3:
 										dad.playAnim('singRIGHT' + altAnim, true);
-										dadnoteMovementXoffset = 40;
+										dadnoteMovementXoffset = 20;
 										dadnoteMovementYoffset = 0;	
 									case 1:
 										dad.playAnim('singDOWN' + altAnim, true);
@@ -2779,8 +2812,6 @@ class PlayState extends MusicBeatState
 			{
 				case 1512: defaultCamZoom = 1.5;
 				case 1514:dad.playAnim('watchThis', true);
-				case 768: FlxTween.tween(camGame, {alpha: 0}, 0.25, {ease: FlxEase.expoOut,});
-				case 773: camGame.alpha = 1;
 				case 1535:
 					remove(dad);
 					dad = new Character(100, 100, 'skeletonguitar');

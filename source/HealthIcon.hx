@@ -17,11 +17,10 @@ class HealthIcon extends FlxSprite
 
 		antialiasing = false;
 		animation.add('bf', [0, 1, 2], 0, false, isPlayer);
-		animation.add('bf-pixel', [3, 5, 4, 33], 0, false, isPlayer);
-		animation.add('bfminecraft', [25, 27, 26, 32], 0, false, isPlayer);
-		animation.add('gf-pixel', [6, 8, 7], 0, false, isPlayer);
-		animation.add('gf-christmas', [6, 8, 7], 0, false, isPlayer);
+		animation.add('bf-minecraft', [13, 15, 14], 0, false, isPlayer);
+		animation.add('gf-minecraft', [6, 8, 7], 0, false, isPlayer);
 		animation.add('jellybean', [9, 10, 11], 0, false, isPlayer);
+		animation.add('jellymid', [9, 10, 11], 0, false, isPlayer);
 		animation.add('skeleton', [12, 12, 12], 0, false, isPlayer);
 		animation.add('skeletonguitar', [12, 12, 12], 0, false, isPlayer);
 		animation.play(char);
