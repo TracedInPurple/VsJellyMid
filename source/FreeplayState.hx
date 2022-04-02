@@ -79,12 +79,12 @@ class FreeplayState extends MusicBeatState
 		//var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
 		//add(bg);
 
-		pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('menuBG'));
+		pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('freeplayBG'));
 		pano.antialiasing = true;
 		pano.updateHitbox();
 		add(pano);
 
-		panoclone = new FlxSprite(-2880, 0).loadGraphic(Paths.image('menuBG'));
+		panoclone = new FlxSprite(-2880, 0).loadGraphic(Paths.image('freeplayBG'));
 		panoclone.antialiasing = true;
 		panoclone.updateHitbox();
 		add(panoclone);
