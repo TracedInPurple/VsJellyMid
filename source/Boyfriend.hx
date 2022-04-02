@@ -36,7 +36,6 @@ class Boyfriend extends Character
 			if (animation.curAnim.name == 'firstDeath' && animation.curAnim.finished)
 			{
 				playAnim('deathLoop');
-
 			}
 		}
 

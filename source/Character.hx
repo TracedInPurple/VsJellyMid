@@ -118,9 +118,9 @@ class Character extends FlxSprite
 				addOffset('danceLeft', 0);
 				addOffset('danceRight', 0);
 
-				setGraphicSize(Std.int(width * 0.92));
+				setGraphicSize(Std.int(width * 1.1));
 				updateHitbox();
-				antialiasing = false;
+				antialiasing = true;
 
 				playAnim('danceRight');
 
@@ -258,7 +258,7 @@ class Character extends FlxSprite
 				width -= 100;
 				height -= 100;
 
-				antialiasing = false;
+				antialiasing = true;
 
 				flipX = true;
 
@@ -317,7 +317,7 @@ class Character extends FlxSprite
 					flipX = true;
 
 				case 'jelly-death':
-					frames = Paths.getSparrowAtlas('characters/jelly-death');
+					frames = Paths.getSparrowAtlas('death/jelly-death');
 					
 					animation.addByPrefix('firstDeath', "jelly-death ouch", 24, false);
 					animation.addByPrefix('deathLoop', "jelly-death waaa", 24, true);
@@ -333,8 +333,6 @@ class Character extends FlxSprite
 					updateHitbox();
 		
 					antialiasing = true;
-						
-					flipX = true;
 
 				case 'skeleton':
 					iconColor = 'FFA26060';
@@ -399,7 +397,7 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * 5));
 				updateHitbox();
 	
-				antialiasing = false;
+				antialiasing = true;
 					
 				flipX = true;
 		}
