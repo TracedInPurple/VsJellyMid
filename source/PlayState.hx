@@ -402,9 +402,9 @@ class PlayState extends MusicBeatState
 			{
 				bgskeletons = new FlxSprite(0, 0);
 				bgskeletons.frames = Paths.getSparrowAtlas('jelly/bgskeletons');
-			 	bgskeletons.animation.addByPrefix('bop', 'bgskeletons idle back skeletons', 24, false);
-				//bgskeletons.animation.addByPrefix('transition', 'bgskeletons back skeletons transition', 24, false);
-				//bgskeletons.animation.addByPrefix('idleback', 'bgskeletons idle back skeletons', 24, false);
+			 	bgskeletons.animation.addByPrefix('bop', 'bgskeletons idle normal', 24, false);
+				bgskeletons.animation.addByPrefix('transition', 'bgskeletons back skeletons transition', 24, false);
+				bgskeletons.animation.addByPrefix('idleback', 'bgskeletons idle back skeletons', 24, false);
 				bgskeletons.screenCenter(X);
 				bgskeletons.scrollFactor.set(1.2, 1);
 			 	bgskeletons.updateHitbox();
@@ -2955,10 +2955,12 @@ class PlayState extends MusicBeatState
 			case 'jelly':
 				if(FlxG.save.data.distractions)
 				{
-					if(curBeat >= 1 && curBeat < 378)
+					if(curBeat >= 1 && curBeat < 379)
 					bgskeletons.animation.play('bop', false);
-					//if(curBeat >= 380)
-					//bgskeletons.animation.play('idleback', false);
+					if(curBeat >= 379 && curBeat < 380)
+						bgskeletons.animation.play('transition', false);
+					if(curBeat >= 381)
+					bgskeletons.animation.play('idleback', false);
 
 				}
 		}

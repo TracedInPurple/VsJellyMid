@@ -255,7 +255,7 @@ class KeyBindMenu extends FlxSubState
 
         if (KeyBinds.gamepad)
         {
-            for(i in 0...5){
+            for(i in 0...4){
 
                 var textStart = (i == curSelected) ? "> " : "  ";
                 trace(gpKeys[i]);
@@ -265,7 +265,7 @@ class KeyBindMenu extends FlxSubState
         }
         else
         {
-            for(i in 0...5){
+            for(i in 0...4){
 
                 var textStart = (i == curSelected) ? "> " : "  ";
             
@@ -298,7 +298,7 @@ class KeyBindMenu extends FlxSubState
 
     function reset(){
 
-        for(i in 0...5){
+        for(i in 0...4){
             keys[i] = defaultKeys[i];
         }
         quit();
@@ -397,9 +397,9 @@ class KeyBindMenu extends FlxSubState
     {
         curSelected += _amount;
                 
-        if (curSelected > 5)
+        if (curSelected > 4)
             curSelected = 0;
         if (curSelected < 0)
-            curSelected = 5;
+            curSelected = 4;
     }
 }

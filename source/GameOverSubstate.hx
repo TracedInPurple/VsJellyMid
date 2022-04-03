@@ -73,7 +73,16 @@ class GameOverSubstate extends MusicBeatSubstate
 		if(PlayState.SONG.song.toLowerCase() == 'atrocity')
 		{
 			jelly.playAnim('firstDeath');
-			FlxG.sound.play(Paths.sound('voicelines/waaaaa'), 1);		
+			jelly.animation.stop();
+			if(jelly.animation.curAnim.finished)
+			{
+				jelly.playAnim('deathConfirm', true);
+				FlxG.sound.play(Paths.sound('voicelines/waaaaa'), 1);
+				if(jelly.animation.curAnim.finished)
+				{
+					endBullshit();
+				}
+			}
 		}
 		else
 		{
@@ -155,11 +164,12 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			isEnding = true;
 			if(PlayState.SONG.song.toLowerCase() == 'atrocity')
-				jelly.playAnim('deathConfirm', true);
+				trace('e');
+				//jelly.playAnim('deathConfirm', true);
 			else
 				bf.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
-			FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix));
+			//FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix));
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
