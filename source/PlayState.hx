@@ -431,6 +431,22 @@ class PlayState extends MusicBeatState
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
 		add(dad);
+		if(SONG.song.toLowerCase() == 'atrocity')
+		{
+				// doing this to save humanity from lag spike!!! - Tiago
+			remove(dad);
+			dad = new Character(100, 100, 'skeletonguitar');
+			dad.x -= 340;
+			dad.y -= 335;
+			add(dad);
+			remove(dad);
+			dad = new Character(100, 100, 'skeleton');
+			dad.x -= 340;
+			dad.y -= 335;
+			add(dad);
+				//stpupipd code but should work and preventt lagsppike
+		}
+				
 
 		// REPOSITIONING PER STAGE
 		switch (curStage)
