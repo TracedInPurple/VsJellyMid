@@ -317,7 +317,7 @@ class Character extends FlxSprite
 					flipX = true;
 
 				case 'jelly-death':
-					frames = Paths.getSparrowAtlas('death/jelly-death');
+					frames = Paths.getSparrowAtlas('jellyleandeath/jelly-death');
 					
 					animation.addByPrefix('firstDeath', "jelly-death ouch", 24, false);
 					animation.addByPrefix('deathLoop', "jelly-death waaa", 24, true);

@@ -329,8 +329,20 @@ class PlayState extends MusicBeatState
 
 			case 'jelly':
 			{
+
 				defaultCamZoom = 1.2;
 				curStage = 'jelly';
+
+
+
+
+
+				docaching();
+
+
+
+
+
 
 				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('jelly/jellybensky'));
 				bg.setGraphicSize(Std.int(bg.width * 1.5));
@@ -431,22 +443,23 @@ class PlayState extends MusicBeatState
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
 		add(dad);
-		if(SONG.song.toLowerCase() == 'atrocity')
-		{
-				// doing this to save humanity from lag spike!!! - Tiago
-			remove(dad);
-			dad = new Character(100, 100, 'skeletonguitar');
-			dad.x -= 340;
-			dad.y -= 335;
-			add(dad);
-			remove(dad);
-			dad = new Character(100, 100, 'skeleton');
-			dad.x -= 340;
-			dad.y -= 335;
-			add(dad);
-				//stpupipd code but should work and preventt lagsppike
-		}
 				
+		if(SONG.song.toLowerCase() == 'atrocity')
+			{
+					// doing this to save humanity from lag spike!!! - Tiago
+				remove(dad);
+				dad = new Character(100, 100, 'skeletonguitar');
+				dad.x -= 340;
+				dad.y -= 335;
+				add(dad);
+				remove(dad);
+				dad = new Character(100, 100, 'skeleton');
+				dad.x -= 340;
+				dad.y -= 335;
+				add(dad);
+					//stpupipd code but should work and preventt lagsppike
+			}
+					
 
 		// REPOSITIONING PER STAGE
 		switch (curStage)
@@ -2679,6 +2692,36 @@ class PlayState extends MusicBeatState
 			accuracy = Math.max(0,totalNotesHit / totalPlayed * 100);
 			accuracyDefault = Math.max(0, totalNotesHitDefault / totalPlayed * 100);
 		}
+
+    function docaching(){
+		var images = [];
+		var xml = [];
+		trace("caching");
+
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/jellyleandeath")))
+		{
+			if (!i.endsWith(".png"))
+				continue;
+			images.push(i);
+
+			if (!i.endsWith(".xml"))
+				continue;
+			xml.push(i);
+		}
+		for (i in images)
+		{
+			var replaced = i.replace(".png","");
+			FlxG.bitmap.add(Paths.image("jellyleandeath/" + replaced,"shared"));
+			trace("cached " + replaced);
+		}
+	
+	for (i in xml)
+		{
+			var replaced = i.replace(".xml","");
+			FlxG.bitmap.add(Paths.image("jellyleandeath/" + replaced,"shared"));
+			trace("cached " + replaced);
+		}
+	}
 
 
 	function getKeyPresses(note:Note):Int
