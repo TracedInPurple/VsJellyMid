@@ -408,7 +408,7 @@ class PlayState extends MusicBeatState
 				bgskeletons.screenCenter(X);
 				bgskeletons.scrollFactor.set(1.2, 1);
 			 	bgskeletons.updateHitbox();
-				bgskeletons.antialiasing = true;
+				bgskeletons.antialiasing = false;
 			 	add(bgskeletons);
 			}
 

@@ -120,7 +120,7 @@ class Character extends FlxSprite
 
 				setGraphicSize(Std.int(width * 0.92));
 				updateHitbox();
-				antialiasing = true;
+				antialiasing = false;
 
 				playAnim('danceRight');
 
@@ -258,7 +258,7 @@ class Character extends FlxSprite
 				width -= 100;
 				height -= 100;
 
-				antialiasing = true;
+				antialiasing = false;
 
 				flipX = true;
 
@@ -282,7 +282,7 @@ class Character extends FlxSprite
 					setGraphicSize(Std.int(width * 0.85));
 					updateHitbox();
 	
-					antialiasing = true;
+					antialiasing = false;
 
 				case 'jellybean':
 					iconColor = 'FF582B68';
@@ -312,7 +312,7 @@ class Character extends FlxSprite
 					setGraphicSize(Std.int(width * 0.8));
 					updateHitbox();
 	
-					antialiasing = true;
+					antialiasing = false;
 
 					flipX = true;
 
@@ -332,16 +332,16 @@ class Character extends FlxSprite
 					setGraphicSize(Std.int(width * 0.8));
 					updateHitbox();
 		
-					antialiasing = true;
+					antialiasing = false;
 
 				case 'skeleton':
 					iconColor = 'FFA26060';
 					frames = Paths.getSparrowAtlas('characters/skeleton');
-					animation.addByPrefix('idle', 'skeleton idle normal', 24, false);
-					animation.addByPrefix('singUP', 'skeleton up normal', 24, false);
-					animation.addByPrefix('singLEFT', 'skeleton left normal', 24, false);
-					animation.addByPrefix('singRIGHT', 'skeleton right normal', 24, false);
-					animation.addByPrefix('singDOWN', 'skeleton down normal', 24, false);
+					animation.addByPrefix('idle', 'skeleton idle', 24, false);
+					animation.addByPrefix('singUP', 'skeleton up', 24, false);
+					animation.addByPrefix('singLEFT', 'skeleton left', 24, false);
+					animation.addByPrefix('singRIGHT', 'skeleton right', 24, false);
+					animation.addByPrefix('singDOWN', 'skeleton down', 24, false);
 					animation.addByPrefix('watchThis', 'skeleton watch this', 24, false);
 	
 					addOffset('idle', -250, -260);
@@ -356,17 +356,17 @@ class Character extends FlxSprite
 					setGraphicSize(Std.int(width * 0.9));
 					updateHitbox();
 	
-					antialiasing = true;
+					antialiasing = false;
 
 				case 'skeletonguitar':
 					iconColor = 'FFA26060';
-					frames = Paths.getSparrowAtlas('characters/skeleton');
-					animation.addByPrefix('idle', 'skeleton idle guitar', 24, false);
-					animation.addByPrefix('singUP', 'skeleton up guitar', 24, false);
-					animation.addByPrefix('singLEFT', 'skeleton left guitar', 24, false);
-					animation.addByPrefix('singRIGHT', 'skeleton right guitar', 24, false);
-					animation.addByPrefix('singDOWN', 'skeleton down guitar', 24, false);
-					animation.addByPrefix('whatIsIt', 'skeleton what is it', 24, false);
+					frames = Paths.getSparrowAtlas('characters/guitar skeleton');
+					animation.addByPrefix('idle', 'guitar skeleton idle', 24, false);
+					animation.addByPrefix('singUP', 'guitar skeleton up', 24, false);
+					animation.addByPrefix('singLEFT', 'guitar skeleton left', 24, false);
+					animation.addByPrefix('singRIGHT', 'guitar skeleton right', 24, false);
+					animation.addByPrefix('singDOWN', 'guitar skeleton down', 24, false);
+					animation.addByPrefix('whatIsIt', 'guitar skeleton what is it', 24, false);
 	
 					addOffset('idle', -250, -260);
 					addOffset("singUP", -254, -268);
@@ -381,7 +381,7 @@ class Character extends FlxSprite
 					setGraphicSize(Std.int(width * 0.9));
 					updateHitbox();
 	
-					antialiasing = true;
+					antialiasing = false;
 
 			case 'minecraftDEATH': // tragically and sadly:((
 				frames = Paths.getSparrowAtlas('death/minecraftDEATH');
@@ -397,7 +397,7 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * 5));
 				updateHitbox();
 	
-				antialiasing = true;
+				antialiasing = false;
 					
 				flipX = true;
 		}
