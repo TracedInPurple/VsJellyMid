@@ -56,9 +56,8 @@
 	
 	<section if="NO_PRELOAD_ALL">
 		<library name="songs"    preload="false" />
-		<library name="shared"   preload="false" />
+		<library name="shared"   preload="true" />
 		<library name="tutorial" preload="false" />
-
 		<library name="week6"    preload="false" />
 	</section>
 	
