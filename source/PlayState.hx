@@ -217,10 +217,6 @@ class PlayState extends MusicBeatState
 	public function addObject(object:FlxBasic) { add(object); }
 	public function removeObject(object:FlxBasic) { remove(object); }
 
-	//Fast Travel shit
-	var scroll:Bool = false;
-	var tween:FlxTween;
-	
 	var songStartDim:FlxSprite;
 	var songStartText:FlxText;
 
@@ -242,6 +238,9 @@ class PlayState extends MusicBeatState
 		misses = 0;
 		repPresses = 0;
 		repReleases = 0;
+		
+		FlxG.mouse.visible = false; // idont like this mouse being >:(
+			
 
 		#if windows
 		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase()  + "/modchart"));
@@ -256,14 +255,8 @@ class PlayState extends MusicBeatState
 		// Making difficulty text for Discord Rich Presence.
 		switch (storyDifficulty)
 		{
-			case 0:
-				storyDifficultyText = "Peaceful";
 			case 1:
 				storyDifficultyText = "Hard";
-			case 2:
-				storyDifficultyText = "Hardcore";
-			case 3:
-				storyDifficultyText = "Ultra Hardcore";
 		}
 
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
@@ -333,16 +326,7 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 1.2;
 				curStage = 'jelly';
 
-
-
-
-
 				docaching();
-
-
-
-
-
 
 				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('jelly/jellybensky'));
 				bg.setGraphicSize(Std.int(bg.width * 1.5));
@@ -2228,13 +2212,6 @@ class PlayState extends MusicBeatState
 			songScore += Math.round(score);
 			songScoreDef += Math.round(ConvertScore.convertScore(noteDiff));
 
-			/* if (combo > 60)
-					daRating = 'sick';
-				else if (combo > 12)
-					daRating = 'good'
-				else if (combo > 4)
-					daRating = 'bad';
-			 */
 
 			var pixelShitPart1:String = "";
 			var pixelShitPart2:String = '';
@@ -2650,15 +2627,12 @@ class PlayState extends MusicBeatState
 			combo = 0;
 			misses++;
 
-			//var noteDiff:Float = Math.abs(daNote.strumTime - Conductor.songPosition);
-			//var wife:Float = EtternaFunctions.wife3(noteDiff, FlxG.save.data.etternaMode ? 1 : 1.7);
 
 			if (FlxG.save.data.accuracyMod == 1)
 				totalNotesHit -= 1;
 
 			songScore -= 10;
 
-			//FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 			FlxG.sound.play(Paths.soundRandom('misc/hit', 1, 3), 0.75);
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 			// FlxG.log.add('played imss note');
@@ -2857,15 +2831,9 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
-		//if (curStep == 1514 && curSong == 'atrocity')
-		//
-		//	dad.playAnim('watchThis', true);
-		//
 
 		if(SONG.song.toLowerCase() == 'atrocity')
 		{
-			FlxG.mouse.visible = false; // idont like this mouse being >:(
-			
 			switch(curStep)
 			{
 				case 767:
@@ -2874,8 +2842,6 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(FlxG.camera, {zoom: 1.5}, 1, {ease: FlxEase.quadOut});
 				case 1514:
 					dad.playAnim('watchThis', true);
-				//case 1530:
-				//		bgskeletons.animation.play('transition', true);
 				case 1535:
 					remove(dad);
 					dad = new Character(100, 100, 'skeletonguitar');
@@ -2899,18 +2865,6 @@ class PlayState extends MusicBeatState
 
 
 
-		// yes this updates every step.
-		// yes this is bad
-		// but i'm doing it to update misses and accuracy
-		/*
-		#if windows
-		// Song duration in a float, useful for the time left feature
-		songLength = FlxG.sound.music.length;
-
-		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "Acc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC,true,  songLength - Conductor.songPosition);
-		#end
-		*/
 
 	}
 	override function beatHit()
@@ -2969,11 +2923,7 @@ class PlayState extends MusicBeatState
 			curBeat % (gfSpeed * 2) == 0 ? 
 			{
 				iconP1.scale.set(1.1, 0.8);
-				//FlxTween.angle(iconP1, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});	
 				iconP2.scale.set(1.1, 0.8);
-				//FlxTween.angle(iconP2, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-				//FlxTween.angle(iconP2, -15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-				//FlxTween.angle(iconP1, 15, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 			} 
 			: 
 			{
